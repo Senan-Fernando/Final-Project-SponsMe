@@ -10,6 +10,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .card-hover:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
@@ -20,7 +27,7 @@
         <nav class="flex flex-col gap-4">
             <a href="#" onclick="window.location.href='Home.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
             <a href="#" onclick="window.location.href='Sponsorprof.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a href="#" onclick="window.location.href='eventform.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
+            <a href="#" onclick="window.location.href='request.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Sponsorship Requests</a>
         </nav>
         <div class="mt-auto">
             <a href="login.html" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
@@ -44,7 +51,7 @@
         <!-- Requests Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Request Card Example -->
-            <div class="bg-gray-100 rounded-lg shadow-lg p-4">
+            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover"  onclick="window.location.href='ViewEventform.html'">
                 <div class="h-32 bg-gray-300 rounded mb-4 relative">
                     <button class="btn btn-primary w-10" style="background-color: rgb(3, 59, 189);" onclick="downloadAction()">
                         <i class="bi bi-download"></i>
@@ -61,7 +68,7 @@
             </div>
 
             <!-- Repeat Cards as Needed -->
-            <div class="bg-gray-100 rounded-lg shadow-lg p-4">
+            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover" onclick="window.location.href='ViewEventform.html'">
                 <div class="h-32 bg-gray-300 rounded mb-4 relative">
                     <button class="btn btn-primary w-10" style="background-color: rgb(3, 59, 189);" onclick="downloadAction()">
                         <i class="bi bi-download"></i>
