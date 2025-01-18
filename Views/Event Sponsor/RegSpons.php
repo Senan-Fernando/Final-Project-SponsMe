@@ -8,37 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // JavaScript to handle redirection based on role selection
-        function handleRoleChange(role) {
-            if (role === 'organizer') {
-                window.location.href = 'RegOrg.html';
-            } else if (role === 'sponsor') {
-                window.location.href = 'RegSpons.html';
-            }
-        }
-    </script>
 </head>
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center p-4">
     <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href='home.html' class='hover:underline'>SponsMe</a>
+        <a href='index.php' class='hover:underline'>SponsMe</a>
     </div>
 
     <!-- Registration Form Container -->
     <div class="bg-gray-100 rounded-lg shadow-lg p-6 w-full max-w-lg">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Register Profile</h2>
-
-        <!-- Role Selection -->
-        <div class="flex flex-col sm:flex-row justify-center gap-8 mb-6">
-            <div class="flex items-center">
-                <input type="radio" name="role" id="organizer" class="form-check-input me-2" onclick="window.location.href='RegOrg.html'">
-                <label for="organizer" class="text-gray-700">Event Organizer</label>
-            </div>
-            <div class="flex items-center">
-                <input type="radio" name="role" id="sponsor" class="form-check-input me-2" checked>
-                <label for="sponsor" class="text-gray-700">Event Sponsor</label>
-            </div>
-        </div>
 
         <!-- Input Fields -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -72,12 +50,12 @@
 
         <!-- Submit Button -->
         <div class="text-center mb-4">
-            <button type="submit" onclick="window.location.href='login.html'" class="btn btn-primary w-full">Sign Up</button>
+            <button type="submit" onclick="window.location.href='login.php'" class="btn btn-primary w-full">Sign Up</button>
         </div>
 
         <!-- Login Link -->
         <p class="text-center text-gray-600">
-            Or <a href="login.html" class="text-blue-600 hover:underline">Log In</a>
+            Or <a href="../Login.php" class="text-blue-600 hover:underline">Log In</a>
         </p>
     </div>
 

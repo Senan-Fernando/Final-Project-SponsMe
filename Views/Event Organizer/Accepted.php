@@ -18,11 +18,11 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a href="#" onclick="window.location.href='Home.html'" class="bg-blue-700 p-3 rounded text-center">Home</a>
-            <a href="#" onclick="window.location.href='Sponsorprof.html'" class="bg-blue-700 p-3 rounded text-center">Profile</a>
+            <a href="#" onclick="window.location.href='index.php'" class="bg-blue-700 p-3 rounded text-center">index</a>
+            <a href="#" onclick="window.location.href='Sponsorprof.php'" class="bg-blue-700 p-3 rounded text-center">Profile</a>
         </nav>
         <div class="mt-auto">
-            <a href="login.html" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
@@ -33,10 +33,10 @@
         <!-- Tabs -->
         <ul class="nav nav-tabs mb-4 flex flex-col md:flex-row">
             <li class="nav-item">
-                <a class="nav-link text-dark" href="Matched.html">Matched Sponsorship</a>
+                <a class="nav-link text-dark" href="Matched.php">Matched Sponsorship</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="Accepted.html">Accepted Sponsorships</a>
+                <a class="nav-link active" href="Accepted.php">Accepted Sponsorships</a>
             </li>
         </ul>
 

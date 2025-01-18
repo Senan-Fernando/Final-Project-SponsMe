@@ -13,7 +13,7 @@
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center">
     <!-- Navbar -->
     <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href='home.html' class='hover:underline'>SponsMe</a>
+        <a href='index.php' class='hover:underline'>SponsMe</a>
     </div>
 
     <!-- Login Form Container -->
@@ -33,13 +33,13 @@
                 
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary w-full"onclick="window.location.href='Orgprof.html'">Log In</button>
+                <button type="submit" class="btn btn-primary w-full"onclick="window.location.href='Orgprof.php'">Log In</button>
 
                 <!-- Additional Links -->
                 <p class="text-center mt-3">
                     <a href="#" class="text-decoration-none">Forget Password?</a>
                     <span> or </span>
-                    <a href="RegOrg.html" class="text-blue-600">Sign Up</a>
+                    <a href="SignupCategory.php" class="text-blue-600">Sign Up</a>
                 </p>
             </form>
         </div>
@@ -58,9 +58,9 @@
 
             // Redirect based on user role
             if (role === "organizer") {
-                window.location.href = "Orgprof.html"; // Redirect to Organizer Profile
+                window.location.href = "Orgprof.php"; // Redirect to Organizer Profile
             } else if (role === "sponsor") {
-                window.location.href = "Sponsorprof.html"; // Redirect to Sponsor Profile
+                window.location.href = "Sponsorprof.php"; // Redirect to Sponsor Profile
             } else {
                 alert("Please select a valid role.");
             }

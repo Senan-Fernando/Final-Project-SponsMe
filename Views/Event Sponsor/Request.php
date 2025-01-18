@@ -25,12 +25,12 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a href="#" onclick="window.location.href='Home.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
-            <a href="#" onclick="window.location.href='Sponsorprof.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a href="#" onclick="window.location.href='request.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Sponsorship Requests</a>
+            <a href="#" onclick="window.location.href='index.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">index</a>
+            <a href="#" onclick="window.location.href='Sponsorprof.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
+            <a href="#" onclick="window.location.href='request.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Sponsorship Requests</a>
         </nav>
         <div class="mt-auto">
-            <a href="login.html" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
@@ -41,17 +41,17 @@
         <!-- Tabs -->
         <ul class="nav nav-tabs mb-4 flex flex-col md:flex-row">
             <li class="nav-item">
-                <a class="nav-link active" href="Request.html">Sponsorship Requests</a>
+                <a class="nav-link active" href="Request.php">Sponsorship Requests</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="Submit.html">Submit Forms</a>
+                <a class="nav-link text-dark" href="Submit.php">Submit Forms</a>
             </li>
         </ul>
 
         <!-- Requests Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Request Card Example -->
-            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover"  onclick="window.location.href='ViewEventform.html'">
+            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover"  onclick="window.location.href='ViewEventform.php'">
                 <div class="h-32 bg-gray-300 rounded mb-4 relative">
                     <button class="btn btn-primary w-10" style="background-color: rgb(3, 59, 189);" onclick="downloadAction()">
                         <i class="bi bi-download"></i>
@@ -68,7 +68,7 @@
             </div>
 
             <!-- Repeat Cards as Needed -->
-            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover" onclick="window.location.href='ViewEventform.html'">
+            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover" onclick="window.location.href='ViewEventform.php'">
                 <div class="h-32 bg-gray-300 rounded mb-4 relative">
                     <button class="btn btn-primary w-10" style="background-color: rgb(3, 59, 189);" onclick="downloadAction()">
                         <i class="bi bi-download"></i>

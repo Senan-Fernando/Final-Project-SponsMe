@@ -44,7 +44,7 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" onclick="window.location.href='Orgprof.html'" class="btn btn-primary w-full">Finished</button>
+                <button type="submit" onclick="window.location.href='Orgprof.php'" class="btn btn-primary w-full">Finished</button>
             </div>
         </form>
     </div>

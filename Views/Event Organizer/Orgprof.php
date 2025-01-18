@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsor Profile</title>
+    <title>Organizer Profile</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
@@ -15,12 +15,12 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a href="#" onclick="window.location.href='Home.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
+            <a href="#" onclick="window.location.href='index.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">index</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a href="#" onclick="window.location.href='Request.html'" class="bg-blue-700 p-3 rounded text-center md:text-left">Sponsorship Requests</a>
+            <a href="#" onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
         </nav>
         <div class="mt-auto">
-            <a href="login.html" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
@@ -51,30 +51,6 @@
                         <input type="email" class="form-control" value="mevan@example.com" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Address</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Mobile No</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Whatsapp</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Facebook</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Instagram</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Youtube</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
                         <label class="block text-gray-700 font-medium mb-2">Password</label>
                         <input type="password" class="form-control" value="********" readonly>
                     </div>
@@ -82,8 +58,8 @@
 
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row justify-between gap-4 mt-6">
-                    <button type="button" onclick="window.location.href='SponsEdit.html'" class="btn btn-primary w-full sm:w-1/3">Edit Profile</button>
-                    <button type="button" onclick="window.location.href='RegSpons.html'" class="btn btn-danger w-full sm:w-1/3">Delete Profile</button>
+                    <button type="button" onclick="window.location.href='OrgEdit.php'" class="btn btn-primary w-full sm:w-1/3">Edit Profile</button>
+                    <button type="button" onclick="window.location.href='RegOrg.php'" class="btn btn-danger w-full sm:w-1/3">Delete Profile</button>
                 </div>
             </form>
         </div>

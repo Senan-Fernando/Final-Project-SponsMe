@@ -88,7 +88,7 @@
 
             <!-- Submit Button -->
             <div class="text-center">
-                <button type="submit" onclick="window.location.href='Sponsorprof.html'" class="btn btn-primary px-6">Finished</button>
+                <button type="submit" onclick="window.location.href='Sponsorprof.php'" class="btn btn-primary px-6">Finished</button>
             </div>
         </form>
     </div>

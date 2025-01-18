@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>index</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
@@ -15,8 +15,8 @@
     <nav class="bg-blue-800 p-4 flex justify-between items-center text-white">
         <h1 class="text-2xl font-bold">SponsMe</h1>
         <div class="flex space-x-4">
-            <a href="#" class="text-white hover:underline text-sm sm:text-base">Home</a>
-            <a href="login.html" class="text-white hover:underline text-sm sm:text-base">Login</a>
+            <a href="#" class="text-white hover:underline text-sm sm:text-base">index</a>
+            <a href="login.php" class="text-white hover:underline text-sm sm:text-base">Login</a>
             <a href="#" class="text-white hover:underline text-sm sm:text-base">Profile</a>
         </div>
     </nav>
@@ -30,7 +30,7 @@
         </div>
 
         <!-- Button -->
-        <button onclick="window.location.href='login.html'" class="mt-8 bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-600 text-sm sm:text-base">
+        <button onclick="window.location.href='login.php'" class="mt-8 bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-600 text-sm sm:text-base">
             Find Sponsorships
         </button>
     </div>

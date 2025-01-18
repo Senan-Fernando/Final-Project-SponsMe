@@ -16,12 +16,12 @@
     <div class="bg-blue-900 text-white w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a href="#" onclick="window.location.href='Sponsorprof.html'"class="bg-blue-700 p-3 rounded text-center">Home</a>
-            <a href="#" onclick="window.location.href='Sponsorprof.html'"class="bg-blue-700 p-3 rounded text-center">Profile</a>
-            <a href="#" onclick="window.location.href='eventform.html'"class="bg-blue-700 p-3 rounded text-center">Seek Sponsorship</a>
+            <a href="#" onclick="window.location.href='Sponsorprof.php'"class="bg-blue-700 p-3 rounded text-center">index</a>
+            <a href="#" onclick="window.location.href='Sponsorprof.php'"class="bg-blue-700 p-3 rounded text-center">Profile</a>
+            <a href="#" onclick="window.location.href='eventform.php'"class="bg-blue-700 p-3 rounded text-center">Seek Sponsorship</a>
         </nav>
         <div class="mt-auto">
-            <a href="login.html" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
@@ -90,7 +90,7 @@
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <br>
-                    <button class="bg-blue-500 text-white px-4 py-1 rounded" onclick="window.location.href='Matched.html'">Request</button>
+                    <button class="bg-blue-500 text-white px-4 py-1 rounded" onclick="window.location.href='Matched.php'">Request</button>
                 </div>
             
                 
