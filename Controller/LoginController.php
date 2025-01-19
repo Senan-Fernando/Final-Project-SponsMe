@@ -5,6 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
+    // Start session
+    session_start();
+
     // Check in sponsors table
     $sql_sponsor = "SELECT id, first_name, last_name, email, password FROM sponsors WHERE email = ?";
     $stmt_sponsor = $conn->prepare($sql_sponsor);
@@ -12,19 +15,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt_sponsor->execute();
     $result_sponsor = $stmt_sponsor->get_result();
 
+    $isSponsor = false;
+    $isOrganizer = false;
+
     if ($result_sponsor->num_rows > 0) {
         $sponsor = $result_sponsor->fetch_assoc();
 
         if (password_verify($password, $sponsor['password'])) {
-            // Save role in local storage
+            // Save role and email in session
+            $_SESSION['userEmail'] = $sponsor['email'];
+            $_SESSION['userRole'] = 'sponsor';
+            $_SESSION['userId'] = $sponsor['id'];
+            $_SESSION['userName'] = $sponsor['first_name'] . ' ' . $sponsor['last_name'];
+
             echo "<script>
                 localStorage.setItem('userRole', 'sponsor');
                 localStorage.setItem('userId', '{$sponsor['id']}');
                 localStorage.setItem('userName', '{$sponsor['first_name']} {$sponsor['last_name']}');
+                sessionStorage.setItem('userEmail', '{$sponsor['email']}');
+                window.location.href = '../Views/Event Sponsor/Sponsorprof.php';
             </script>";
 
-            // Redirect to sponsor profile
-            header('Location: ../Views/Event Sponsor/Sponsorprof.php');
+            $isSponsor = true;
             exit();
         } else {
             echo "Invalid password for sponsor.";
@@ -43,20 +55,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $organizer = $result_organizer->fetch_assoc();
 
         if (password_verify($password, $organizer['password'])) {
-            // Save role in local storage
+            // Save role and email in session
+            $_SESSION['userEmail'] = $organizer['email'];
+            $_SESSION['userRole'] = 'organizer';
+            $_SESSION['userId'] = $organizer['id'];
+            $_SESSION['userName'] = $organizer['first_name'] . ' ' . $organizer['last_name'];
+
             echo "<script>
                 localStorage.setItem('userRole', 'organizer');
                 localStorage.setItem('userId', '{$organizer['id']}');
                 localStorage.setItem('userName', '{$organizer['first_name']} {$organizer['last_name']}');
+                sessionStorage.setItem('userEmail', '{$organizer['email']}');
+                window.location.href = '../Views/Event Organizer/Orgprof.php';
             </script>";
 
-            // Redirect to organizer profile
-            header('Location: ../Views/Event Organizer/Orgprof.php');
+            $isOrganizer = true;
             exit();
         } else {
             echo "Invalid password for organizer.";
             exit();
         }
+    }
+
+    // If both roles exist
+    if ($isSponsor && $isOrganizer) {
+        $_SESSION['userRole'] = 'sponsor,organizer';
+        echo "<script>
+            localStorage.setItem('userRole', 'sponsor,organizer');
+            window.location.href = '../Views/Common/Dashboard.php';
+        </script>";
+        exit();
     }
 
     // If no match found
