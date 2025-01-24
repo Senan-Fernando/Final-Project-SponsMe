@@ -17,7 +17,7 @@
         <nav class="flex flex-col gap-4">
             <a  onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a href="#" onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
+            <a  onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
         </nav>
         <div class="mt-auto">
             <a href="Login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>

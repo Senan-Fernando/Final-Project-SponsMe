@@ -15,7 +15,7 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6 flex flex-col items-center md:items-start">
         <h2 class="text-2xl font-bold mb-6">SponsMe</h2>
         <nav class="flex flex-col gap-4 w-full">
-            <a href="#" onclick="window.location.href='index.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">index</a>
+            <a href="#" onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">home</a>
             <a href="#" onclick="window.location.href='Orgprof.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
             <a href="#" onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
         </nav>

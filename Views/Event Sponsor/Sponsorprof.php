@@ -40,7 +40,7 @@ if ($result->num_rows > 0) {
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6 flex flex-col items-center">
         <h2 class="text-2xl font-bold mb-6 text-center">SponsMe</h2>
         <nav class="flex flex-col gap-4 w-full">
-            <a href="index.php" class="bg-blue-700 p-3 rounded text-center">Index</a>
+            <a href="../home.php" class="bg-blue-700 p-3 rounded text-center">home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center">Profile</a>
             <a href="Request.php" class="bg-blue-700 p-3 rounded text-center">Sponsorship Requests</a>
         </nav>
