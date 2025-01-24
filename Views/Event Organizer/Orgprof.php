@@ -20,7 +20,7 @@
             <a  onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
         </nav>
         <div class="mt-auto">
-            <a href="Login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
