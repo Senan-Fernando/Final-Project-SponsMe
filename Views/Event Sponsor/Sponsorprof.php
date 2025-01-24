@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
             <a href="Request.php" class="bg-blue-700 p-3 rounded text-center">Sponsorship Requests</a>
         </nav>
         <div class="mt-auto w-full">
-            <a href="../Login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
