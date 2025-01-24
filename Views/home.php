@@ -15,7 +15,7 @@
     <nav class="bg-blue-800 p-4 flex justify-between items-center text-white">
         <h1 class="text-2xl font-bold">SponsMe</h1>
         <div class="flex space-x-4">
-            <a href="#" class="text-white hover:underline text-sm sm:text-base">index</a>
+            <a href="home.php" class="text-white hover:underline text-sm sm:text-base">home</a>
             <a href="login.php" class="text-white hover:underline text-sm sm:text-base">Login</a>
             <a href="#" class="text-white hover:underline text-sm sm:text-base">Profile</a>
         </div>
