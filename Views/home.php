@@ -52,7 +52,7 @@
         <div class="lg:w-1/2 relative mt-8 lg:mt-0">
             <div class=" absolute inset-y-0 right-0 lg:right-16 w-1/2 lg:w-1/3"></div>
             <div class=" absolute inset-y-0 right-0 lg:right-12 w-1/4 lg:w-1/6"></div>
-            <img src="Static assets/images/hand.jpg" alt="Event Sponsorship" class="relative z-10 max-w-full rounded-lg shadow-lg">
+            <img src="./Static assets/images/hand.jpg" alt="Event Sponsorship" class="relative z-10 max-w-full rounded-lg shadow-lg">
         </div>
     </section>
 
