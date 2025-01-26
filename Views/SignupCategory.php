@@ -12,7 +12,7 @@
 
 <body class="bg-white-500 min-h-screen flex items-center justify-center">
     <!-- Navbar -->
-    <div class="absolute top-4 left-4 text-white text-xl font-bold">
+    <div class="absolute top-4 left-4 text-black text-xl font-bold">
         <a href='home.php' class='hover:underline'>SponsMe</a>
     </div>
 
