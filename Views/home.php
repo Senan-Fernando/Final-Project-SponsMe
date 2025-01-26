@@ -70,6 +70,14 @@
         </div>
     </section>
 
+    <section id="footer" class="bg-black">
+        <div class="text-center px-4">
+            <p class="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto">
+                Simply sign up, create your profile, and start exploring sponsorship opportunities tailored to your needs. Whether you're an organizer or a sponsor, our platform is here to help you succeed.
+            </p>
+        </div>
+    </section>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
