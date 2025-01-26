@@ -40,7 +40,7 @@
             <div class="text-balck">
                 <h1 class="text-4xl sm:text-5xl font-bold">We Get</h1>
                 <h1 class="text-4xl sm:text-5xl font-bold">Your Sponsorship</h1>
-                <h1 class="text-4xl sm:text-5xl font-bold text-blue-300">Easily</h1>
+                <h1 class="text-4xl sm:text-5xl font-bold text-green-500">Easily</h1>
             </div>
 
             <!-- Button -->
