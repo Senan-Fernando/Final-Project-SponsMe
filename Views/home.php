@@ -26,16 +26,18 @@
     <nav class="bg-blue-800 p-4 flex justify-between items-center text-white sticky top-0 z-50">
         <h1 class="text-2xl font-bold">SponsMe</h1>
         <div class="flex space-x-4">
-            <a href="#home" class="text-white hover:underline text-sm sm:text-base">Home</a>
+            <a href="home.php" class="text-white hover:underline text-sm sm:text-base">Home</a>
             <a href="#about" class="text-white hover:underline text-sm sm:text-base">About</a>
             <a href="#how-it-works" class="text-white hover:underline text-sm sm:text-base">How It Works</a>
+            <a href="Login.php" class="text-white hover:underline text-sm sm:text-base">Login</a>
+            <a href="#profile" class="text-white hover:underline text-sm sm:text-base">Profile</a>
         </div>
     </nav>
 
     <!-- Home Section -->
-    <section id="home" class="bg-gradient-to-r from-blue-500 to-gray-400">
+    <section id="home" class="bg-white">
         <div class="flex flex-col items-center justify-center text-center px-4">
-            <div class="text-white">
+            <div class="text-balck">
                 <h1 class="text-4xl sm:text-5xl font-bold">We Get</h1>
                 <h1 class="text-4xl sm:text-5xl font-bold">Your Sponsorship</h1>
                 <h1 class="text-4xl sm:text-5xl font-bold text-blue-300">Easily</h1>
