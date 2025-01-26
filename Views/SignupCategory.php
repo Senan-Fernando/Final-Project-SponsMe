@@ -10,9 +10,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-white-500 min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center">
     <!-- Navbar -->
-    <div class="absolute top-4 left-4 text-black text-xl font-bold">
+    <div class="absolute top-4 left-4 text-white text-xl font-bold">
         <a href='home.php' class='hover:underline'>SponsMe</a>
     </div>
 
