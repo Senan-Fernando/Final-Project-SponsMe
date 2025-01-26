@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+    <title>Home</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
@@ -26,21 +26,21 @@
     <nav class="bg-blue-800 p-4 flex justify-between items-center text-white sticky top-0 z-50">
         <h1 class="text-2xl font-bold">SponsMe</h1>
         <div class="flex space-x-4">
-            <a href="home.php" class="text-white hover:underline text-sm sm:text-base">Home</a>
+            <a href="#home" class="text-white hover:underline text-sm sm:text-base">Home</a>
             <a href="#about" class="text-white hover:underline text-sm sm:text-base">About</a>
             <a href="#how-it-works" class="text-white hover:underline text-sm sm:text-base">How It Works</a>
-            <a href="Login.php" class="text-white hover:underline text-sm sm:text-base">Login</a>
             <a href="#profile" class="text-white hover:underline text-sm sm:text-base">Profile</a>
+            <a href="Login.php" class="text-white hover:underline text-sm sm:text-base">Login</a>
         </div>
     </nav>
 
     <!-- Home Section -->
-    <section id="home" class="bg-white">
+    <section id="home" class="bg-gradient-to-r from-blue-500 to-gray-400">
         <div class="flex flex-col items-center justify-center text-center px-4">
-            <div class="text-balck">
+            <div class="text-white">
                 <h1 class="text-4xl sm:text-5xl font-bold">We Get</h1>
                 <h1 class="text-4xl sm:text-5xl font-bold">Your Sponsorship</h1>
-                <h1 class="text-4xl sm:text-5xl font-bold text-green-500">Easily</h1>
+                <h1 class="text-4xl sm:text-5xl font-bold text-blue-300">Easily</h1>
             </div>
 
             <!-- Button -->
@@ -69,31 +69,31 @@
             </p>
         </div>
     </section>
-    <!-- Footer -->
-<footer class="bg-black text-white text-center py-4">
-    <div class="container">
-        <p class="text-sm sm:text-base">
-            © 2025 SponsMe. All rights reserved.
-        </p>
-        <div class="flex justify-center space-x-4 mt-2">
-            <a href="#" class="hover:underline">Privacy Policy</a>
-            <a href="#" class="hover:underline">Terms of Service</a>
-            <a href="#" class="hover:underline">Contact Us</a>
-        </div>
-        <div class="mt-4">
-            <p class="text-xs sm:text-sm">Follow us:</p>
-            <div class="flex justify-center space-x-3">
-                <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-facebook"></i></a>
-                <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-twitter"></i></a>
-                <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-instagram"></i></a>
-                <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-linkedin"></i></a>
+<!-- Footer -->
+    <footer class="bg-blue-800 text-white text-center py-4">
+        <div class="container">
+            <p class="text-sm sm:text-base">
+                © 2025 SponsMe. All rights reserved.
+            </p>
+            <div class="flex justify-center space-x-4 mt-2">
+                <a href="#" class="hover:underline">Privacy Policy</a>
+                <a href="#" class="hover:underline">Terms of Service</a>
+                <a href="#" class="hover:underline">Contact Us</a>
+            </div>
+            <div class="mt-4">
+                <p class="text-xs sm:text-sm">Follow us:</p>
+                <div class="flex justify-center space-x-3">
+                    <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white hover:text-blue-300"><i class="bi bi-linkedin"></i></a>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
