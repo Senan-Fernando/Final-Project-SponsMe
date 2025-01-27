@@ -10,15 +10,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center">
+<body class="bg-gray-200 min-h-screen flex items-center justify-center">
     <!-- Navbar -->
     <div class="absolute top-4 left-4 text-black text-xl font-bold">
-        <a href="home.php" class="hover:underline">SponsMe</a>
+    <a href='home.php' class='text-black hover:text'>SponsMe</a>
     </div>
 
     <!-- Login Form Container -->
     <div class="container mx-auto">
-        <div class="bg-blue-900 rounded-lg shadow-lg p-6 max-w-md mx-auto mb-24">
+        <div style="background-color: #001A6E;" class="rounded-lg shadow-lg p-6 max-w-md mx-auto mb-24">
             <h2 class="text-2xl font-bold text-center text-white mb-6">Log In</h2>
 
             <form id="loginForm" action="../Controller/LoginController.php" method="POST">

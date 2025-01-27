@@ -27,7 +27,7 @@
 <body>
 
     <!-- Footer -->
-    <footer class="bg-blue-800 text-white text-center py-4 w-screen">
+    <footer class="bg-blue-900 text-white text-center py-4 w-screen">
         <div class="container">
             <!-- Footer Text -->
             <p class="text-sm sm:text-base">

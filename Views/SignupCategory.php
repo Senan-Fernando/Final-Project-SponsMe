@@ -26,7 +26,7 @@
     </div>
 
     <div class="container mx-auto px-4 flex items-center justify-center">
-        <div class="bg-blue-900 shadow-lg rounded-lg p-8 space-y-6 max-w-sm w-full">
+        <div style="background-color: #001A6E;" class="shadow-lg rounded-lg p-8 space-y-6 max-w-sm w-full">
             <h2 class="text-2xl font-bold text-center text-white mb-6">Select Your Role</h2>
 
             <a href="./Event Sponsor/RegSpons.php" class="hover-up block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300 text-center">
