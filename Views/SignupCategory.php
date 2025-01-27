@@ -22,7 +22,7 @@
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center">
     <!-- Navbar -->
     <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href='index.php' class='hover:underline'>SponsMe</a>
+        <a href='home.php' class='hover:underline'>SponsMe</a>
     </div>
 
     <!-- Login Form Container -->
