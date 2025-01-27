@@ -17,22 +17,22 @@
     </div>
 
     <!-- Login Form Container -->
-    <div class="container mx-auto px-4">
-        <div class="bg-blue-900 rounded-lg shadow-lg p-6 max-w-md mx-auto">
+    <div class="container mx-auto">
+        <div class="bg-blue-900 rounded-lg shadow-lg p-6 max-w-md mx-auto mb-24">
             <h2 class="text-2xl font-bold text-center text-white mb-6">Log In</h2>
 
             <form id="loginForm" action="../Controller/LoginController.php" method="POST">
                 <!-- Input Fields -->
                 <div class="mb-3">
-                <input type="email" name="email" id="email" 
-                    class="form-control border-2 border-black focus:border-blue-700 focus:outline-none rounded-lg p-3 text-gray-800 w-full" 
-                    placeholder="Email" required>
-            </div>
-            <div class="mb-3">
-                <input type="password" name="password" id="password" 
-                    class="form-control border-2 border-black focus:border-blue-700 focus:outline-none rounded-lg p-3 text-gray-800 w-full" 
-                    placeholder="Password" required>
-            </div>
+                    <input type="email" name="email" id="email"
+                        class="form-control border-2 border-blue-200 focus:border-blue-700 focus:outline-none rounded-lg p-3 text-gray-800 w-full"
+                        placeholder="Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="password" name="password" id="password"
+                        class="form-control border-2 border-blue-200 focus:border-blue-700 focus:outline-none rounded-lg p-3 text-gray-800 w-full"
+                        placeholder="Password" required>
+                </div>
 
                 <!-- Submit Button -->
                 <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">
@@ -49,7 +49,11 @@
             </form>
         </div>
     </div>
-    
+
+    <div class="fixed bottom-0">
+        <?php include 'footer.php'; ?>
+
+    </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

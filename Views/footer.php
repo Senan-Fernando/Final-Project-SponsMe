@@ -16,8 +16,10 @@
             min-height: 100vh;
         }
 
+        /* Allow the main content to grow and push the footer down */
+
         main {
-            flex: 1; /* Allow the main content to grow and push the footer down */
+            flex: 1; 
         }
     </style>
 </head>
@@ -25,7 +27,7 @@
 <body>
 
     <!-- Footer -->
-    <footer class="bg-blue-800 text-white text-center py-4">
+    <footer class="bg-blue-800 text-white text-center py-4 w-screen">
         <div class="container">
             <!-- Footer Text -->
             <p class="text-sm sm:text-base">
