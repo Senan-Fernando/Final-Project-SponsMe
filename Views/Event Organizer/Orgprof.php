@@ -26,8 +26,8 @@
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Profile</h3>
+        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold text-white mb-6">Profile</h3>
 
             <!-- Profile Details -->
             <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
@@ -36,22 +36,22 @@
                     <span class="text-gray-600 text-2xl">👤</span>
                 </div>
                 <div>
-                    <h4 class="text-xl font-semibold text-gray-800 text-center sm:text-left">Mevan Rajapaksha</h4>
+                    <h4 class="text-xl font-semibold text-white text-center sm:text-left">Mevan Rajapaksha</h4>
                 </div>
             </div>
 
             <form>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Name</label>
+                        <label class="block text-white font-medium mb-2">Name</label>
                         <input type="text" class="form-control" value="Mevan Rajapaksha" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Email</label>
+                        <label class="block text-white font-medium mb-2">Email</label>
                         <input type="email" class="form-control" value="mevan@example.com" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Password</label>
+                        <label class="block text-white font-medium mb-2">Password</label>
                         <input type="password" class="form-control" value="********" readonly>
                     </div>
                 </div>

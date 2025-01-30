@@ -12,7 +12,7 @@
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 flex items-center justify-center min-h-screen p-4">
 
     <!-- Edit Profile Form Container -->
-    <div class="bg-gray-100 rounded-lg shadow-lg p-6 w-full max-w-lg">
+    <div class="bg-[#1F509A] rounded-lg shadow-lg p-6 w-full max-w-lg">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Edit Profile</h2>
 
         <form>

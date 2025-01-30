@@ -25,7 +25,7 @@
     </div>
    
     <!-- Registration Form Container -->
-    <div style="background-color: #001A6E;" class=" rounded-lg shadow-lg p-6 w-full max-w-lg">
+    <div style="background-color: #1F509A;" class=" rounded-lg shadow-lg p-6 w-full max-w-lg">
         <h2 class="text-2xl font-bold text-center text-white mb-6">Register Profile</h2>
 
         <!-- Input Fields -->

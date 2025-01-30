@@ -27,7 +27,7 @@
 
     <!-- Main Content -->
     <div class="flex-1 p-8">
-        <div class="bg-[#001A6E] rounded-lg shadow-lg p-6">
+        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
 
             <!-- Profile Details -->
             <div class="flex items-center gap-6 mb-6">

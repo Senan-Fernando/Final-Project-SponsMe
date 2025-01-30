@@ -51,7 +51,7 @@ if ($result->num_rows > 0) {
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
             <h3 class="text-2xl font-bold text-gray-800 mb-6">Profile</h3>
 
             <!-- Profile Details -->

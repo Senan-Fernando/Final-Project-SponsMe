@@ -17,7 +17,7 @@
     </div>
 
     <!-- Login Form Container -->
-    <div class="w-full max-w-lg bg-[#001A6E] rounded-lg shadow-lg p-8">
+    <div class="w-full max-w-lg bg-[#1F509A] rounded-lg shadow-lg p-8">
         <h2 class="text-3xl font-bold text-center text-white mb-6">Log In</h2>
 
         <form id="loginForm" action="../Controller/LoginController.php" method="POST">

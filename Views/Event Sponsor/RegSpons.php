@@ -17,7 +17,7 @@
     </div>
 
     <!-- Registration Form Container -->
-    <div class="bg-[#001A6E] rounded-lg shadow-lg p-6 w-full max-w-lg">
+    <div class="bg-[#1F509A] rounded-lg shadow-lg p-6 w-full max-w-lg">
         <h2 class="text-2xl font-bold text-center text-white mb-6">Register Profile</h2>
 
         <!-- Input Fields -->
