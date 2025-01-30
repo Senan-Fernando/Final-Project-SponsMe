@@ -13,18 +13,18 @@
 
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center p-4">
     <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href='../home.php' class='hover:underline'>SponsMe</a>
+        <a href='../home.php' class='text-black hover:text'>SponsMe</a>
     </div>
 
     <!-- Registration Form Container -->
-    <div class="bg-gray-100 rounded-lg shadow-lg p-6 w-full max-w-lg">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Register Profile</h2>
+    <div class="bg-[#001A6E] rounded-lg shadow-lg p-6 w-full max-w-lg">
+        <h2 class="text-2xl font-bold text-center text-white mb-6">Register Profile</h2>
 
         <!-- Input Fields -->
         <form id="registrationForm" action="../../Controller/Sponsor/RegSponsController.php" method="POST" class="grid gap-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input name="first_name" type="text" placeholder="First Name" class="form-control" required>
-                <input name="last_name" type="text" placeholder="Last Name" class="form-control" required>
+                <input name="company_name" type="text" placeholder="Company Name" class="form-control" required>
+                <input name="company_code" type="text" placeholder="Company Code" class="form-control" required>
             </div>
             <input name="email" type="email" placeholder="Email" class="form-control" required>
             <input name="address" type="text" placeholder="Address" class="form-control" required>
@@ -37,16 +37,17 @@
                     <option value="Sports">Sports</option>
                     <option value="Gaming">Gaming</option>
                 </select>
+                <input name="unit_incharge" type="text" placeholder="Incharge of the Unit" class="form-control" required>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input name="mobile_no" type="text" placeholder="Mobile No." class="form-control" required>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input name="facebook" type="text" placeholder="Facebook Profile Link" class="form-control">
-                <input name="instagram" type="text" placeholder="Instagram Profile Link" class="form-control">
+                
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input name="whatsapp" type="text" placeholder="Whatsapp" class="form-control">
+                <input name="instagram" type="text" placeholder="Instagram Profile Link" class="form-control">
                 <input name="youtube" type="text" placeholder="YouTube Channel Link" class="form-control">
             </div>
 
@@ -60,7 +61,7 @@
             <div id="passwordMessage" class="text-center text-sm mt-2"></div>
 
             <!-- Submit Button -->
-            <button type="button" onclick="validatePasswords()" class="btn btn-primary w-full">Sign Up</button>
+            <button type="button" onclick="validatePasswords()" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Sign Up</button>
         </form>
 
 
