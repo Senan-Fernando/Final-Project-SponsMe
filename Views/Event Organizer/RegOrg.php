@@ -21,12 +21,12 @@
 </head>
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center p-4">
     <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href='../home.php' class='hover:underline'>SponsMe</a>
+        <a href='../home.php' class='text-black hover:text'>SponsMe</a>
     </div>
-
+   
     <!-- Registration Form Container -->
-    <div class="bg-gray-100 rounded-lg shadow-lg p-6 w-full max-w-lg">
-        <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Register Profile</h2>
+    <div style="background-color: #001A6E;" class=" rounded-lg shadow-lg p-6 w-full max-w-lg">
+        <h2 class="text-2xl font-bold text-center text-white mb-6">Register Profile</h2>
 
         <!-- Input Fields -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -47,11 +47,11 @@
 
         <!-- Submit Button -->
         <div class="text-center mb-4">
-            <button type="submit" onclick="window.location.href='login.php'" class="btn btn-primary w-full">Sign Up</button>
+            <button type="submit" onclick="window.location.href='login.php'" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Sign Up</button>
         </div>
 
         <!-- Login Link -->
-        <p class="text-center text-gray-600">
+        <p class="text-center text-gray-400">
             <span> or </span>
         </p>
         <p class="text-center text-blue-600">
