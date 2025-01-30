@@ -26,10 +26,12 @@
                 <input name="company_name" type="text" placeholder="Company Name" class="form-control" required>
                 <input name="unit" type="text" placeholder="Unit" class="form-control" required>
             </div>
-            <input name="unit" type="text" placeholder="Name of the unit incharge" class="form-control" required>
-            <input name="address" type="text" placeholder="Address" class="form-control" required>
-
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input name="text" type="text" placeholder="NIC no. of the unit incharge" class="form-control" required>
+                <input name="address" type="text" placeholder="Address" class="form-control" required>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input name="text" type="text" placeholder="Company registration code" class="form-control" required>
                 <select name="sponsor_events" class="form-select" required>
                     <option selected disabled>Sponsor Events</option>
                     <option value="Concerts">Concerts</option>
@@ -37,18 +39,19 @@
                     <option value="Sports">Sports</option>
                     <option value="Gaming">Gaming</option>
                 </select>
-                <input name="email" type="email" placeholder="Email" class="form-control" required>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input name="mobile_no" type="text" placeholder="Mobile No." class="form-control" required>
-                <input name="facebook" type="text" placeholder="Facebook Profile Link" class="form-control">
                 
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input name="email" type="email" placeholder="Email" class="form-control" required>
+                <input name="mobile_no" type="text" placeholder="Mobile No." class="form-control" required>
+               
+                
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input name="facebook" type="text" placeholder="Facebook Profile Link" class="form-control">
                 <input name="instagram" type="text" placeholder="Instagram Profile Link" class="form-control">
-                <input name="youtube" type="text" placeholder="YouTube Channel Link" class="form-control">
             </div>
 
             <!-- Password Fields -->
@@ -66,8 +69,8 @@
 
 
         <!-- Login Link -->
-        <p class="text-center text-gray-600 mt-4">
-            Or <a href="../Login.php" class="text-blue-600 hover:underline">Log In</a>
+        <p class="text-center text-gray-400 mt-4">
+            Or <a href="../Login.php" class="text-blue-400 hover:underline">Log In</a>
         </p>
     </div>
 

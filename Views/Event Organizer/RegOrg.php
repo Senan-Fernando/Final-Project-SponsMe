@@ -55,7 +55,7 @@
             <span> or </span>
         </p>
         <p class="text-center text-blue-600">
-            <a href="../Login.php" class="text-blue-600 hover:underline">Log In</a>
+            <a href="../Login.php" class="text-blue-400 hover:underline">Log In</a>
         </p>
     </div>
 

@@ -10,6 +10,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex justify-center items-center p-4">
+    <div class="absolute top-4 left-4 text-white text-xl font-bold">
+        <a href='../home.php' class='text-black hover:text'>SponsMe</a>
+    </div>
 
     <!-- Edit Profile Form Container -->
     <div class="bg-[#1F509A] rounded-lg shadow-lg p-8 w-full max-w-2xl">
@@ -40,17 +43,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="email" class="block text-white font-medium mb-2">Email</label>
-                    <input type="email" id="email" class="form-control" placeholder="" required>
-                </div>
-                <div>
-                    <label for="mobile" class="block text-white font-medium mb-2">Mobile No</label>
-                    <input type="text" id="mobile" class="form-control" placeholder="" required>
-                </div>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-                <div>
-                    <label for="code" class="block text-white font-medium mb-2">Company code</label>
+                    <label for="code" class="block text-white font-medium mb-2">Company registration code</label>
                     <input type="text" id="mobile" class="form-control" placeholder="" required>
                 </div>
                 <div>
@@ -66,12 +59,12 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="Whatsapp" class="block text-white font-medium mb-2">Whatsapp</label>
-                    <input type="text" id="Whatsapp" class="form-control" placeholder="" required>
+                    <label for="email" class="block text-white font-medium mb-2">Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="" required>
                 </div>
                 <div>
-                    <label for="Youtube" class="block text-white font-medium mb-2">Youtube</label>
-                    <input type="text" id="Youtube" class="form-control" placeholder="" required>
+                    <label for="mobile" class="block text-white font-medium mb-2">Mobile No</label>
+                    <input type="text" id="mobile" class="form-control" placeholder="" required>
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
