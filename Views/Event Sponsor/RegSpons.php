@@ -24,9 +24,9 @@
         <form id="registrationForm" action="../../Controller/Sponsor/RegSponsController.php" method="POST" class="grid gap-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input name="company_name" type="text" placeholder="Company Name" class="form-control" required>
-                <input name="company_code" type="text" placeholder="Company Code" class="form-control" required>
+                <input name="unit" type="text" placeholder="Unit" class="form-control" required>
             </div>
-            <input name="email" type="email" placeholder="Email" class="form-control" required>
+            <input name="unit" type="text" placeholder="Name of the unit incharge" class="form-control" required>
             <input name="address" type="text" placeholder="Address" class="form-control" required>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -37,7 +37,7 @@
                     <option value="Sports">Sports</option>
                     <option value="Gaming">Gaming</option>
                 </select>
-                <input name="unit_incharge" type="text" placeholder="Incharge of the Unit" class="form-control" required>
+                <input name="email" type="email" placeholder="Email" class="form-control" required>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
