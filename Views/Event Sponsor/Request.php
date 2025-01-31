@@ -51,9 +51,9 @@
         <!-- Requests Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Request Card Example -->
-            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover"  onclick="window.location.href='ViewEventform.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-lg p-4 card-hover"  onclick="window.location.href='ViewEventform.php'">
                 <div class="h-32 bg-gray-300 rounded mb-4 relative">
-                    <button class="btn btn-primary w-10" style="background-color: rgb(3, 59, 189);" onclick="downloadAction()">
+                    <button class="btn btn-primary w-10 bg-blue-600"  onclick="downloadAction()">
                         <i class="bi bi-download"></i>
                     </button>
                 </div>
@@ -68,9 +68,9 @@
             </div>
 
             <!-- Repeat Cards as Needed -->
-            <div class="bg-gray-100 rounded-lg shadow-lg p-4 card-hover" onclick="window.location.href='ViewEventform.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-lg p-4 card-hover" onclick="window.location.href='ViewEventform.php'">
                 <div class="h-32 bg-gray-300 rounded mb-4 relative">
-                    <button class="btn btn-primary w-10" style="background-color: rgb(3, 59, 189);" onclick="downloadAction()">
+                    <button class="btn btn-primary w-10 bg-blue-600"  onclick="downloadAction()">
                         <i class="bi bi-download"></i>
                     </button>
                 </div>

@@ -27,7 +27,7 @@
                 <input name="unit" type="text" placeholder="Unit" class="form-control" required>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input name="text" type="text" placeholder="NIC no. of the unit incharge" class="form-control" required>
+                <input name="text" type="text" placeholder="Emp ID of the unit incharge" class="form-control" required>
                 <input name="address" type="text" placeholder="Address" class="form-control" required>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -44,7 +44,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <input name="email" type="email" placeholder="Email" class="form-control" required>
-                <input name="mobile_no" type="text" placeholder="Mobile No." class="form-control" required>
+                <input name="mobile_no" type="text" placeholder="Contact No." class="form-control" required>
                
                 
             </div>

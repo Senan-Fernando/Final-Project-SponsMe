@@ -32,7 +32,7 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                 <div>
-                    <label for="text" class="block text-white font-medium mb-2">NIC no. of the unit incharge</label>
+                    <label for="text" class="block text-white font-medium mb-2">Employee ID of the unit incharge</label>
                     <input type="text" id="name" class="form-control" placeholder="" required>
                 </div>
                 <div>
