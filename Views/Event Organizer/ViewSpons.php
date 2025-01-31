@@ -36,10 +36,10 @@
                     <span class="text-gray-600 text-2xl">👤</span>
                 </div>
                 <div>
-                    <h4 class="text-xl font-semibold text-gray-800">Company name</h4>
+                    <h4 class="text-xl font-semibold text-white">Company name</h4>
                 </div>
                 <br>
-                <div class="flex gap-1 items-center ">
+                <div class="flex gap-1 items-center text-white">
                     <p class="font-medium">Rate</p>
                     <div class="flex gap-1">
                         <i class="bi bi-star-fill text-warning"></i>
@@ -60,37 +60,33 @@
             <form>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Name</label>
+                        <label class="block text-white font-medium mb-2">Unit</label>
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Email</label>
+                        <label class="block text-white font-medium mb-2">Email</label>
                         <input type="email" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Location</label>
+                        <label class="block text-white font-medium mb-2">Contact No.</label>
+                        <input type="text" class="form-control" value="" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white font-medium mb-2">Location</label>
                         <input type="text" class="form-control" value="" readonly>
                         <br>
-                        <button class="bg-blue-500 text-white px-4 py-1 rounded">Go for Direction</button>
+                        <button class="bg-green-500 text-white px-4 py-1 rounded">Go for Direction</button>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Mobile No.</label>
+                        <label class="block text-white font-medium mb-2">Facebook</label>
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Whatsapp</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Facebook</label>
-                        <input type="text" class="form-control" value="" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Instagram</label>
+                        <label class="block text-white font-medium mb-2">Instagram</label>
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <br>
-                    <button class="bg-blue-500 text-white px-4 py-1 rounded" onclick="window.location.href='Matched.php'">Request</button>
+                    <button class="bg-green-500 text-white px-4 py-1 rounded" onclick="window.location.href='Matched.php'">Request</button>
                 </div>
             
                 

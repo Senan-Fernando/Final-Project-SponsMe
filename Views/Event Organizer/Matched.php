@@ -40,32 +40,32 @@
         <!-- Sponsorship Cards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Sponsorship Card Template -->
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
                 <div class="bg-gray-300 w-full h-32 rounded mb-4"></div>
                 <button class="btn btn-primary w-full">Request and upload the form</button>
             </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
                 <div class="bg-gray-300 w-full h-32 rounded mb-4"></div>
                 <button class="btn btn-primary w-full">Request and upload the form</button>
             </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
                 <div class="bg-gray-300 w-full h-32 rounded mb-4"></div>
                 <button class="btn btn-primary w-full">Request and upload the form</button>
             </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
                 <div class="bg-gray-300 w-full h-32 rounded mb-4"></div>
                 <button class="btn btn-primary w-full">Request and upload the form</button>
             </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
                 <div class="bg-gray-300 w-full h-32 rounded mb-4"></div>
                 <button class="btn btn-primary w-full">Request and upload the form</button>
             </div>
 
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer" onclick="window.location.href='ViewSpons.php'">
                 <div class="bg-gray-300 w-full h-32 rounded mb-4"></div>
                 <button class="btn btn-primary w-full">Request and upload the form</button>
             </div>

@@ -12,7 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-white min-h-screen flex flex-col md:flex-row">
+<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
 
     <!-- Sidebar -->
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
@@ -43,8 +43,8 @@
         <!-- Requests Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Request Card Example -->
-            <div class="bg-blue-200 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
@@ -53,8 +53,8 @@
             </div>
 
             <!-- Repeat similar cards as needed -->
-            <div class="bg-blue-300 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
@@ -62,32 +62,32 @@
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
 
-            <div class="bg-blue-300 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
-            <div class="bg-blue-300 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
-            <div class="bg-blue-300 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
-            <div class="bg-blue-300 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
