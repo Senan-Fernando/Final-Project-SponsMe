@@ -15,7 +15,7 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a  onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">home</a>
+            <a  onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
             <a  onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
         </nav>
@@ -43,16 +43,24 @@
             <form>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
-                        <label class="block text-white font-medium mb-2">Name</label>
-                        <input type="text" class="form-control" value="Mevan Rajapaksha" readonly>
+                        <label class="block text-white font-medium mb-2">Crew Name</label>
+                        <input type="text" class="form-control" value="#" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white font-medium mb-2">Crew Leader NIC Number</label>
+                        <input type="text" class="form-control" value="123456789" readonly>
                     </div>
                     <div>
                         <label class="block text-white font-medium mb-2">Email</label>
-                        <input type="email" class="form-control" value="mevan@example.com" readonly>
+                        <input type="email" class="form-control" value="aaaaa@gmail.com" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">Password</label>
-                        <input type="password" class="form-control" value="********" readonly>
+                        <label class="block text-white font-medium mb-2">Mobile No.</label>
+                        <input type="text" class="form-control" value="12345" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white font-medium mb-2">Whatsapp</label>
+                        <input type="text" class="form-control" value="12345" readonly>
                     </div>
                 </div>
 
