@@ -31,7 +31,7 @@
         <!-- Input Fields -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <input type="text" placeholder="Crew name" class="form-control" required>
-            <input type="text" placeholder="NIC Number" class="form-control" required>
+            <input type="text" placeholder="Crew Leader NIC Number" class="form-control" required>
         </div>
         <div class="mb-4">
             <input type="email" placeholder="Email" class="form-control" required>
