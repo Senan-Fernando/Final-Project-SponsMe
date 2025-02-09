@@ -19,6 +19,18 @@
     <!-- Registration Form Container -->
     <div class="bg-[#1F509A] rounded-lg shadow-lg p-6 w-full max-w-lg">
         <h2 class="text-2xl font-bold text-center text-white mb-6">Register Profile</h2>
+        
+         <!-- Checkbox Selection -->
+         <div class="flex justify-center space-x-6 mb-6">
+            <label class="flex items-center text-white space-x-2">
+                <input type="radio" name="company_type" value="existing" class="form-checkbox text-white">
+                <span>Existing Company</span>
+            </label>
+            <label class="flex items-center text-white space-x-2">
+                <input type="radio" name="company_type" value="new" class="form-checkbox text-white">
+                <span>New Company</span>
+            </label>
+        </div>
 
         <!-- Input Fields -->
         <form id="registrationForm" action="../../Controller/Sponsor/RegSponsController.php" method="POST" class="grid gap-4">
