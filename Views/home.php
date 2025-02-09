@@ -52,7 +52,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-gray-100">
+    <section id="about" class="bg-gray-200">
         <div class="text-center px-4">
             <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-gray-800">About Us</h2>
             <p class="text-gray-700 text-sm sm:text-base max-w-2xl mx-auto">
