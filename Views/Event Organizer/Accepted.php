@@ -18,8 +18,8 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a href="#" onclick="window.location.href='index.php'" class="bg-blue-700 p-3 rounded text-center">index</a>
-            <a href="#" onclick="window.location.href='Sponsorprof.php'" class="bg-blue-700 p-3 rounded text-center">Profile</a>
+            <a href="#" onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center">Home</a>
+            <a href="#" onclick="window.location.href='Orgprof.php'" class="bg-blue-700 p-3 rounded text-center">Profile</a>
         </nav>
         <div class="mt-auto">
             <a href="login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
@@ -43,8 +43,8 @@
         <!-- Requests Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Request Card Example -->
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
@@ -53,40 +53,41 @@
             </div>
 
             <!-- Repeat similar cards as needed -->
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
                 </div>
                 <button class="btn btn-primary w-full">View and download</button>
             </div>
-            <div class="bg-gray-100 rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
-                <div class="bg-gray-300 w-full h-32 rounded mb-4 flex items-center justify-center">
+            <div class="bg-[#1F509A] rounded-lg shadow-md hover:shadow-lg p-4 flex flex-col items-center transform hover:scale-105 transition duration-300 cursor-pointer">
+                <div class="bg-blue-300 w-full h-32 rounded mb-4 flex items-center justify-center">
                     <button class="btn btn-success w-10" style="cursor: pointer;" onclick="acceptAction()">
                         <i class="bi bi-check-circle"></i>
                     </button>
@@ -95,6 +96,8 @@
             </div>
         </div>
     </div>
+
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

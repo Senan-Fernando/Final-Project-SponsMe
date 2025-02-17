@@ -1,26 +1,26 @@
 <?php
-session_start();
-include '../../Model/db.php';
+// session_start();
+// include '../../Model/db.php';
 
 // Check if the user is logged in
-if (!isset($_SESSION['userEmail'])) {
-    header('Location: ../Login.php');
-    exit();
-}
+// if (!isset($_SESSION['userEmail'])) {
+//     header('Location: ../Login.php');
+//     exit();
+// }
 
-$userEmail = $_SESSION['userEmail'];
-$sql = "SELECT `id`, `first_name`, `last_name`, `email`, `address`, `sponsor_events`, `mobile_no`, `facebook`, `instagram`, `whatsapp`, `youtube`, `profile_picture`, `password`, `created_at` FROM `sponsors` WHERE `email` = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $userEmail);
-$stmt->execute();
-$result = $stmt->get_result();
+// $userEmail = $_SESSION['userEmail'];
+// $sql = "SELECT `id`, `first_name`, `last_name`, `email`, `address`, `sponsor_events`, `mobile_no`, `facebook`, `instagram`, `whatsapp`, `youtube`, `profile_picture`, `password`, `created_at` FROM `sponsors` WHERE `email` = ?";
+// $stmt = $conn->prepare($sql);
+// $stmt->bind_param("s", $userEmail);
+// $stmt->execute();
+// $result = $stmt->get_result();
 
-if ($result->num_rows > 0) {
-    $sponsor = $result->fetch_assoc();
-} else {
-    echo "<script>alert('Sponsor data not found! Redirecting to login.'); window.location.href = '../Login.php';</script>";
-    exit();
-}
+// if ($result->num_rows > 0) {
+//     $sponsor = $result->fetch_assoc();
+// } else {
+//     echo "<script>alert('Sponsor data not found! Redirecting to login.'); window.location.href = '../Login.php';</script>";
+//     exit();
+// }
 ?>
 
 <!DOCTYPE html>
@@ -40,18 +40,18 @@ if ($result->num_rows > 0) {
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6 flex flex-col items-center">
         <h2 class="text-2xl font-bold mb-6 text-center">SponsMe</h2>
         <nav class="flex flex-col gap-4 w-full">
-            <a href="index.php" class="bg-blue-700 p-3 rounded text-center">Index</a>
+            <a href="../home.php" class="bg-blue-700 p-3 rounded text-center">Home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center">Profile</a>
             <a href="Request.php" class="bg-blue-700 p-3 rounded text-center">Sponsorship Requests</a>
         </nav>
         <div class="mt-auto w-full">
-            <a href="../Login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
             <h3 class="text-2xl font-bold text-gray-800 mb-6">Profile</h3>
 
             <!-- Profile Details -->
@@ -75,36 +75,40 @@ if ($result->num_rows > 0) {
                         <input type="file" id="profilePicture" name="profile_picture" class="bg-gray-100 p-3 rounded border border-gray-300 w-full">
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Name</label>
+                        <label class="block text-gray-700 font-medium mb-2">Company Name</label>
                         <input id="name" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="name" value="<?php echo htmlspecialchars($sponsor['first_name'] . ' ' . $sponsor['last_name']); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Email</label>
-                        <input type="email" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="email" value="<?php echo htmlspecialchars($sponsor['email']); ?>" readonly>
+                        <label class="block text-gray-700 font-medium mb-2">Unit</label>
+                        <input type="name" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="email" value="<?php echo htmlspecialchars($sponsor['email']); ?>" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Employee ID of unit incharge</label>
+                        <input id="Emp_ID" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="address" value="<?php echo htmlspecialchars($sponsor['address']); ?>" readonly>
                     </div>
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">Address</label>
-                        <input id="address" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="address" value="<?php echo htmlspecialchars($sponsor['address']); ?>" readonly>
+                        <input id="address" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="mobile_no" value="<?php echo htmlspecialchars($sponsor['mobile_no']); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Mobile No</label>
-                        <input id="mobile_no" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="mobile_no" value="<?php echo htmlspecialchars($sponsor['mobile_no']); ?>" readonly>
+                        <label class="block text-gray-700 font-medium mb-2">Company Registration code</label>
+                        <input id="code" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="whatsapp" value="<?php echo htmlspecialchars($sponsor['whatsapp']); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Whatsapp</label>
-                        <input id="whatsapp" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="whatsapp" value="<?php echo htmlspecialchars($sponsor['whatsapp']); ?>" readonly>
+                        <label class="block text-gray-700 font-medium mb-2">Email</label>
+                        <input id="Email" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="facebook" value="<?php echo htmlspecialchars($sponsor['facebook']); ?>" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Contact No.</label>
+                        <input id="contact_no" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="instagram" value="<?php echo htmlspecialchars($sponsor['instagram']); ?>" readonly>
                     </div>
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">Facebook</label>
-                        <input id="facebook" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="facebook" value="<?php echo htmlspecialchars($sponsor['facebook']); ?>" readonly>
+                        <input id="facebook" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="youtube" value="<?php echo htmlspecialchars($sponsor['youtube']); ?>" readonly>
                     </div>
                     <div>
                         <label class="block text-gray-700 font-medium mb-2">Instagram</label>
-                        <input id="instagram" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="instagram" value="<?php echo htmlspecialchars($sponsor['instagram']); ?>" readonly>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-2">Youtube</label>
-                        <input id="youtube" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="youtube" value="<?php echo htmlspecialchars($sponsor['youtube']); ?>" readonly>
+                        <input id="instagram" type="text" class="bg-gray-100 p-3 rounded border border-gray-300 w-full" name="youtube" value="<?php echo htmlspecialchars($sponsor['youtube']); ?>" readonly>
                     </div>
                 </div>
 

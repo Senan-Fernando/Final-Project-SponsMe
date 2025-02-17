@@ -15,19 +15,19 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a href="#" onclick="window.location.href='index.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">index</a>
+            <a  onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a href="#" onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
+            <a  onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
         </nav>
         <div class="mt-auto">
-            <a href="login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
-            <h3 class="text-2xl font-bold text-gray-800 mb-6">Profile</h3>
+        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold text-white mb-6">Profile</h3>
 
             <!-- Profile Details -->
             <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
@@ -36,23 +36,31 @@
                     <span class="text-gray-600 text-2xl">👤</span>
                 </div>
                 <div>
-                    <h4 class="text-xl font-semibold text-gray-800 text-center sm:text-left">Mevan Rajapaksha</h4>
+                    <h4 class="text-xl font-semibold text-white text-center sm:text-left">Mevan Rajapaksha</h4>
                 </div>
             </div>
 
             <form>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Name</label>
-                        <input type="text" class="form-control" value="Mevan Rajapaksha" readonly>
+                        <label class="block text-white font-medium mb-2">Crew Name</label>
+                        <input type="text" class="form-control" value="#" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Email</label>
-                        <input type="email" class="form-control" value="mevan@example.com" readonly>
+                        <label class="block text-white font-medium mb-2">Crew Leader NIC Number</label>
+                        <input type="text" class="form-control" value="123456789" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Password</label>
-                        <input type="password" class="form-control" value="********" readonly>
+                        <label class="block text-white font-medium mb-2">Email</label>
+                        <input type="email" class="form-control" value="aaaaa@gmail.com" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white font-medium mb-2">Mobile No.</label>
+                        <input type="text" class="form-control" value="12345" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white font-medium mb-2">Whatsapp</label>
+                        <input type="text" class="form-control" value="12345" readonly>
                     </div>
                 </div>
 

@@ -12,35 +12,39 @@
 
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center">
     <!-- Navbar -->
-    <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href="index.php" class="hover:underline">SponsMe</a>
+    <div class="absolute top-4 left-4 text-black text-xl font-bold">
+        <a href="home.php" class="text-black hover:text">SponsMe</a>
     </div>
 
     <!-- Login Form Container -->
-    <div class="container mx-auto px-4">
-        <div class="bg-gray-100 rounded-lg shadow-lg p-6 max-w-md mx-auto">
-            <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Log In</h2>
+    <div class="w-full max-w-lg bg-[#1F509A] rounded-lg shadow-lg p-8">
+        <h2 class="text-3xl font-bold text-center text-white mb-6">Log In</h2>
 
-            <form id="loginForm" action="../Controller/LoginController.php" method="POST">
-                <!-- Input Fields -->
-                <div class="mb-3">
-                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
-                </div>
-                <div class="mb-3">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
-                </div>
+        <form id="loginForm" action="../Controller/LoginController.php" method="POST">
+            <!-- Input Fields -->
+            <div class="mb-5">
+                <input type="email" name="email" id="email"
+                    class="form-control border-2 border-blue-200 focus:border-blue-700 focus:outline-none rounded-lg p-3 text-gray-800 w-full"
+                    placeholder="Email" required>
+            </div>
+            <div class="mb-5">
+                <input type="password" name="password" id="password"
+                    class="form-control border-2 border-blue-200 focus:border-blue-700 focus:outline-none rounded-lg p-3 text-gray-800 w-full"
+                    placeholder="Password" required>
+            </div>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary w-full">Log In</button>
+            <!-- Submit Button -->
+            <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg text-lg">
+                Log In
+            </button>
 
-                <!-- Additional Links -->
-                <p class="text-center mt-3">
-                    <a href="#" class="text-decoration-none">Forget Password?</a>
-                    <span> or </span>
-                    <a href="SignupCategory.php" class="text-blue-600">Sign Up</a>
-                </p>
-            </form>
-        </div>
+            <!-- Additional Links -->
+            <p class="text-center mt-5 text-white">
+                <a href="#" class="text-white hover:underline">Forget Password?</a>
+                <span> or </span>
+                <a href="SignupCategory.php" class="text-red-500 hover:underline">Sign Up</a>
+            </p>
+        </form>
     </div>
 
     <!-- Bootstrap JS -->

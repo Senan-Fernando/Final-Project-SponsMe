@@ -16,18 +16,18 @@
     <div class="bg-blue-900 text-white w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a href="#" onclick="window.location.href='index.php'"class="bg-blue-700 p-3 rounded text-center">index</a>
+            <a onclick="window.location.href='../home.php'"class="bg-blue-700 p-3 rounded text-center">Home</a>
             <a href="#" onclick="window.location.href='Sponsorprof.php'"class="bg-blue-700 p-3 rounded text-center">Profile</a>
-            <a href="#" onclick="window.location.href='Request.php'"class="bg-blue-700 p-3 rounded text-center">Sponsorship Requests</a>
+            <a onclick="window.location.href='Request.php'"class="bg-blue-700 p-3 rounded text-center">Sponsorship Requests</a>
         </nav>
         <div class="mt-auto">
-            <a href="login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
     <!-- Main Content -->
     <div class="flex-1 p-8">
-        <div class="bg-white rounded-lg shadow-lg p-6">
+        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
 
             <!-- Profile Details -->
             <div class="flex items-center gap-6 mb-6">
@@ -36,7 +36,7 @@
                     <span class="text-gray-600 text-2xl">👤</span>
                 </div>
                 <div>
-                    <h4 class="text-xl font-semibold text-gray-800">Event Topic</h4>
+                    <h4 class="text-xl font-semibold text-white">Event Topic</h4>
                 </div>
                 <br>
                 <div class="grid grid-cols-1 gap-4">
@@ -49,27 +49,27 @@
             <form>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Location</label>
+                        <label class="block text-white font-medium mb-2">Location</label>
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Sponsorship Type</label>
+                        <label class="block text-white font-medium mb-2">Sponsorship Type</label>
                         <input type="email" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Target Audience</label>
+                        <label class="block text-white font-medium mb-2">Target Audience</label>
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Mobile No.</label>
+                        <label class="block text-white font-medium mb-2">Mobile No.</label>
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Whatsapp</label>
+                        <label class="block text-white font-medium mb-2">Whatsapp</label>
                         <input type="text" class="form-control" value="" readonly>
                     </div>
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2">Message</label>
+                        <label class="block text-white font-medium mb-2">Message</label>
                         <input type="text" class="form-control" value="" readonly>
                         <br>
                         <div class="flex justify-between gap-2">
