@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center p-4">
@@ -85,6 +86,50 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            let formData = new FormData(this);
+
+            // Validate password match before sending data
+            if (formData.get("password") !== formData.get("confirm_password")) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Password Mismatch',
+                    text: 'Passwords do not match!',
+                    confirmButtonText: 'Try Again'
+                });
+                return;
+            }
+
+            fetch("../../Controller/Sponsor/RegSponsController.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json()) // Process JSON response
+            .then(data => {
+                console.log("Server Response:", data); // Log response to console
+                
+                Swal.fire({
+                    icon: data.icon,
+                    title: data.title,
+                    text: data.text
+                });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Something went wrong. Please try again!',
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
+    </script>
     
     <!-- JavaScript for Checkbox Selection Color -->
     <script>

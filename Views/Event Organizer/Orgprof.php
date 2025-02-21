@@ -1,26 +1,58 @@
+<?php
+include '../../Model/db.php';
+session_start();
+
+// Check if the session is set for the organizer
+if (!isset($_SESSION['userId']) || $_SESSION['userRole'] !== 'organizer') {
+    header("Location: ../login.php");
+    exit();
+}
+
+$organizer_id = $_SESSION['userId'];
+
+// Fetch organizer details
+$query = "SELECT `crew_name`, `leader_nic`, `first_name`, `last_name`, `email`, `mobile`, `whatsapp` FROM `organizers` WHERE id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $organizer_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$organizer = $result->fetch_assoc();
+
+$query = "SELECT image_path FROM image_uploads WHERE user_id = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $organizer_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$image = $result->fetch_assoc();
+
+// Close connection
+$stmt->close();
+$conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organizer Profile</title>
-    <!-- Bootstrap CSS -->
+    <title>Organizer Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
 
     <!-- Sidebar -->
-    <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
+    <div class="bg-blue-900 text-white w-full md:w-1/4 p-6 flex flex-col">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a  onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
+            <a href="../home.php" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a  onclick="window.location.href='eventform.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
+            <a href="eventform.php" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
         </nav>
         <div class="mt-auto">
-            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
+            <a href="../logout.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
         </div>
     </div>
 
@@ -31,49 +63,198 @@
 
             <!-- Profile Details -->
             <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
-                <div class="bg-gray-300 w-24 h-24 rounded-full flex items-center justify-center">
-                    <!-- Placeholder for Profile Image -->
-                    <span class="text-gray-600 text-2xl">👤</span>
+                <div class="relative">
+                    <?php
+                    include '../../Model/db.php';
+
+                    ?>
+
+                    <img src="<?php echo !empty($image['image_path']) ? '../../' . htmlspecialchars($image['image_path']) : 'default-avatar.png'; ?>" class="bg-gray-300 w-24 h-24 rounded-full object-cover">
+
                 </div>
-                <div>
-                    <h4 class="text-xl font-semibold text-white text-center sm:text-left">Mevan Rajapaksha</h4>
-                </div>
+
+                <form action="../../Controller/Organizer/uploadImage.php" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="profile_image" accept="image/*" class="form-control mb-2" required>
+                    <input type="hidden" name="user_id" value="<?php echo $organizer_id; ?>">
+                    <input type="hidden" name="email" value="<?php echo htmlspecialchars($organizer['email']); ?>">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
             </div>
+
 
             <form>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
                         <label class="block text-white font-medium mb-2">Crew Name</label>
-                        <input type="text" class="form-control" value="#" readonly>
+                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['crew_name'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
                         <label class="block text-white font-medium mb-2">Crew Leader NIC Number</label>
-                        <input type="text" class="form-control" value="123456789" readonly>
+                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['leader_nic'] ?? "N/A"); ?>" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white font-medium mb-2">First Name</label>
+                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['first_name'] ?? "N/A"); ?>" readonly>
+                    </div>
+                    <div>
+                        <label class="block text-white font-medium mb-2">Last Name</label>
+                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['last_name'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
                         <label class="block text-white font-medium mb-2">Email</label>
-                        <input type="email" class="form-control" value="aaaaa@gmail.com" readonly>
+                        <input type="email" class="form-control" value="<?php echo htmlspecialchars($organizer['email'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
                         <label class="block text-white font-medium mb-2">Mobile No.</label>
-                        <input type="text" class="form-control" value="12345" readonly>
+                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['mobile'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">Whatsapp</label>
-                        <input type="text" class="form-control" value="12345" readonly>
+                        <label class="block text-white font-medium mb-2">WhatsApp</label>
+                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['whatsapp'] ?? "N/A"); ?>" readonly>
                     </div>
                 </div>
 
                 <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row justify-between gap-4 mt-6">
-                    <button type="button" onclick="window.location.href='OrgEdit.php'" class="btn btn-primary w-full sm:w-1/3">Edit Profile</button>
-                    <button type="button" onclick="window.location.href='RegOrg.php'" class="btn btn-danger w-full sm:w-1/3">Delete Profile</button>
+                    <button type="button" onclick="openModal()" class="btn btn-primary w-full sm:w-1/3">Edit Profile</button>
+                    <button type="button" onclick="confirmDelete()" class="btn btn-danger w-full sm:w-1/3">Delete Profile</button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
+
+    <!-- Remove the nested form and fix the structure -->
+    <div id="editProfileModal" class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl p-6 rounded-lg shadow-lg max-h-[90vh] overflow-y-auto">
+            <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">Edit Profile</h2>
+
+            <form action="../../Controller/Organizer/UpdateOrganizerdashboard.php" method="POST" id="updateProfileForm">
+                <input type="hidden" name="user_id" value="<?php echo $organizer_id; ?>">
+
+                <div class="space-y-6">
+                    <!-- Basic Information -->
+                    <div class="border-b pb-4">
+                        <h3 class="font-semibold text-lg text-gray-700">Basic Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700">First Name</label>
+                                <input type="text" name="first_name" class="w-full p-2 border rounded"
+                                    value="<?php echo htmlspecialchars($organizer['first_name'] ?? ""); ?>" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700">Last Name</label>
+                                <input type="text" name="last_name" class="w-full p-2 border rounded"
+                                    value="<?php echo htmlspecialchars($organizer['last_name'] ?? ""); ?>" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Crew Details -->
+                    <div class="border-b pb-4">
+                        <h3 class="font-semibold text-lg text-gray-700">Crew Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700">Crew Name</label>
+                                <input type="text" name="crew_name" class="w-full p-2 border rounded"
+                                    value="<?php echo htmlspecialchars($organizer['crew_name'] ?? ""); ?>" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700">Crew Leader NIC</label>
+                                <input type="text" name="leader_nic" class="w-full p-2 border rounded"
+                                    value="<?php echo htmlspecialchars($organizer['leader_nic'] ?? ""); ?>" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Details -->
+                    <div class="border-b pb-4">
+                        <h3 class="font-semibold text-lg text-gray-700">Contact Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-700">Mobile Number</label>
+                                <input type="text" name="mobile" class="w-full p-2 border rounded"
+                                    value="<?php echo htmlspecialchars($organizer['mobile'] ?? ""); ?>" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700">WhatsApp</label>
+                                <input type="text" name="whatsapp" class="w-full p-2 border rounded"
+                                    value="<?php echo htmlspecialchars($organizer['whatsapp'] ?? ""); ?>">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-col md:flex-row justify-between gap-2">
+                        <button type="submit" class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 w-full md:w-auto">
+                            Save Changes
+                        </button>
+                        <button type="button" onclick="closeModal()" class="bg-gray-500 text-white p-2 rounded hover:bg-gray-600 w-full md:w-auto">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            <!-- Change Password Section -->
+            <div class="border-t pt-6 mt-6">
+                <h3 class="font-semibold text-lg text-gray-700">Change Password</h3>
+                <form action="../../Controller/Organizer/UpdatePassword.php" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="hidden" name="user_id" value="<?php echo $organizer_id; ?>">
+                    <div>
+                        <label class="block text-gray-700">Current Password</label>
+                        <input type="password" name="current_password" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700">New Password</label>
+                        <input type="password" name="new_password" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700">Confirm Password</label>
+                        <input type="password" name="confirm_password" class="w-full p-2 border rounded" required>
+                    </div>
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit" class="bg-red-600 text-white p-2 rounded hover:bg-red-700 w-full md:w-auto">
+                            Update Password
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function confirmDelete() {
+            if (confirm("Are you sure you want to delete your profile? This action cannot be undone.")) {
+                window.location.href = 'deleteOrganizer.php';
+            }
+        }
+    </script>
+    <script>
+        function openModal() {
+            document.getElementById("editProfileModal").classList.remove("hidden");
+        }
+
+        function closeModal() {
+            document.getElementById("editProfileModal").classList.add("hidden");
+        }
+
+        function confirmDelete() {
+            if (confirm("Are you sure you want to delete your profile?")) {
+                window.location.href = 'deleteOrganizer.php';
+            }
+        }
+        // Add this to your existing JavaScript
+        document.getElementById('updateProfileForm').addEventListener('submit', function(e) {
+            // Debug: Log form data before submission
+            const formData = new FormData(this);
+            console.log('Form data being submitted:');
+            for (let pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
