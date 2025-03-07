@@ -95,6 +95,7 @@ $conn->close();
             <a href="../home.php" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
             <a href="eventform.php" class="bg-blue-700 p-3 rounded text-center md:text-left">Seek Sponsorship</a>
+            <a href="AcceptedSponsers.php" class="bg-blue-700 p-3 rounded text-center md:text-left">Accepted Sponsorship</a>
         </nav>
         <div class="mt-auto">
             <a href="../../Controller/Logout.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
