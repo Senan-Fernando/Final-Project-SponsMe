@@ -20,7 +20,7 @@ session_destroy();
         sessionStorage.clear();
 
         // Redirect to the login page after clearing storage
-        window.location.href = '../Login.php';
+        window.location.href = '../Views/home.php';
     </script>
 </head>
 <body>
