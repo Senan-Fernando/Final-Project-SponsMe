@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isOrganizer = false;
 
     // Check sponsors table
-    $sql_sponsor = "SELECT id, email, password FROM sponsors WHERE email = ?";
+    $sql_sponsor = "SELECT id, company_name, email, password FROM sponsors WHERE email = ?";
     $stmt_sponsor = $conn->prepare($sql_sponsor);
     
     if (!$stmt_sponsor) {
@@ -35,12 +35,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['userEmail'] = $sponsor['email'];
             $_SESSION['userRole'] = 'sponsor';
             $_SESSION['userId'] = $sponsor['id'];
-            $_SESSION['userName'] = $sponsor['first_name'] . ' ' . $sponsor['last_name'];
+            $_SESSION['userName'] = $sponsor['company_name']; // Changed from first_name/last_name to company_name
 
             $response = [
                 "icon" => "success",
                 "title" => "Login Successful",
-                "text" => "Welcome, {$sponsor['first_name']}!",
+                "text" => "Welcome, {$sponsor['company_name']}!", // Changed from first_name to company_name
                 "redirect" => "../Views/Event Sponsor/Sponsorprof.php"
             ];
 
