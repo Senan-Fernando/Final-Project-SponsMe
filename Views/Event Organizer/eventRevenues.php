@@ -34,6 +34,11 @@ if (isset($_SESSION['message']) && isset($_SESSION['alert_type'])) {
     unset($_SESSION['alert_type']);
 }
 
+// Collect data for chart
+$chartLabels = [];
+$requestedAmounts = [];
+$receivedAmounts = [];
+
 // Close connection
 $stmt->close();
 $conn->close();
@@ -50,6 +55,7 @@ $conn->close();
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
@@ -71,6 +77,32 @@ $conn->close();
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
+        <!-- Chart Summary Section -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-4">Sponsorship Summary</h3>
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/2">
+                    <canvas id="sponsorshipChart" height="250"></canvas>
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center">
+                    <div class="stats-summary space-y-4">
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700">Total Requested</h4>
+                            <p class="text-2xl font-bold text-blue-600" id="totalRequested">Calculating...</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700">Total Received</h4>
+                            <p class="text-2xl font-bold text-green-600" id="totalReceived">Calculating...</p>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-700">Funding Gap</h4>
+                            <p class="text-2xl font-bold text-red-600" id="fundingGap">Calculating...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
             <h3 class="text-2xl font-bold text-white mb-6">Event Revenues from Sponsors</h3>
 
@@ -82,7 +114,9 @@ $conn->close();
                             <th class="px-4 py-3 text-left text-gray-700">Event</th>
                             <th class="px-4 py-3 text-left text-gray-700">Company</th>
                             <th class="px-4 py-3 text-left text-gray-700">Unit</th>
-                            <th class="px-4 py-3 text-left text-gray-700">Amount</th>
+                            <th class="px-4 py-3 text-left text-gray-700">Requested</th>
+                            <th class="px-4 py-3 text-left text-gray-700">Received</th>
+                            <th class="px-4 py-3 text-left text-gray-700">Difference</th>
                             <th class="px-4 py-3 text-left text-gray-700">Status</th>
                             <th class="px-4 py-3 text-left text-gray-700">Documents</th>
                             <th class="px-4 py-3 text-left text-gray-700">Actions</th>
@@ -91,10 +125,14 @@ $conn->close();
                     <tbody class="divide-y divide-gray-200">
                         <?php
                         if ($requests->num_rows > 0) {
+                            $totalRequested = 0;
+                            $totalReceived = 0;
+                            
+                            // Reconnect to the database
+                            $conn = new mysqli($servername, $username, $password, $database);
+                            
                             while ($row = $requests->fetch_assoc()) {
                                 // Fetch associated sponsorship details
-                                $conn = new mysqli($servername, $username, $password, $database);
-                                
                                 // Fetch sponsorship details for this request
                                 $details_query = "SELECT * FROM sponsorship_details WHERE request_id = ?";
                                 $stmt = $conn->prepare($details_query);
@@ -106,19 +144,58 @@ $conn->close();
                                 $budget_query = "SELECT SUM(amount) as total_budget FROM sponsorship_budget 
                                                  WHERE sponsor_id = ? AND unit = ?";
                                 $stmt = $conn->prepare($budget_query);
-                                $stmt->bind_param("is", $row['sponsor_id'], $row['unit']);
+                                $stmt->bind_param("is", $row['sponsor_id'], $row['sponsor_unit']);
                                 $stmt->execute();
                                 $budget = $stmt->get_result()->fetch_assoc();
                                 
-                                $amount = isset($details['amount']) ? $details['amount'] : "Pending";
+                                $requested_amount = isset($details['amount']) ? floatval($details['amount']) : 0;
+                                $received_budget = isset($budget['total_budget']) ? floatval($budget['total_budget']) : 0;
+                                $difference = $requested_amount - $received_budget;
+                                $percentage = ($requested_amount > 0) ? min(100, max(0, ($received_budget / $requested_amount) * 100)) : 0;
+                                
+                                // Add to totals for summary
+                                if($requested_amount > 0) {
+                                    $totalRequested += $requested_amount;
+                                }
+                                if($received_budget > 0) {
+                                    $totalReceived += $received_budget;
+                                }
+                                
+                                // Add data for chart
+                                if($row['event_topic'] && ($requested_amount > 0 || $received_budget > 0)) {
+                                    $chartLabels[] = $row['event_topic'];
+                                    $requestedAmounts[] = $requested_amount;
+                                    $receivedAmounts[] = $received_budget;
+                                }
+                                
                                 $document = isset($details['document_path']) ? $details['document_path'] : "None";
                                 $notes = isset($details['notes']) ? $details['notes'] : "No notes";
+                                
+                                // Format amounts for display
+                                $requested_display = $requested_amount > 0 ? "$" . number_format($requested_amount, 2) : "Pending";
+                                $received_display = $received_budget > 0 ? "$" . number_format($received_budget, 2) : "$0.00";
+                                $difference_display = $requested_amount > 0 ? "$" . number_format($difference, 2) : "N/A";
                                 
                                 echo "<tr>";
                                 echo "<td class='px-4 py-3'>" . htmlspecialchars($row['event_topic']) . " (" . htmlspecialchars($row['event_type']) . ")</td>";
                                 echo "<td class='px-4 py-3'>" . htmlspecialchars($row['company_name']) . "</td>";
                                 echo "<td class='px-4 py-3'>" . htmlspecialchars($row['unit']) . "</td>";
-                                echo "<td class='px-4 py-3'>" . ($amount !== "Pending" ? "$" . htmlspecialchars($amount) : $amount) . "</td>";
+                                echo "<td class='px-4 py-3'>" . $requested_display . "</td>";
+                                echo "<td class='px-4 py-3'>" . $received_display . "</td>";
+                                
+                                // Difference with progress bar
+                                echo "<td class='px-4 py-3'>";
+                                if($requested_amount > 0) {
+                                    echo "<div class='flex flex-col'>";
+                                    echo "<span class='" . ($difference < 0 ? "text-green-600" : "text-red-600") . "'>" . $difference_display . "</span>";
+                                    echo "<div class='w-full bg-gray-200 rounded-full h-2.5 mt-1'>";
+                                    echo "<div class='bg-blue-600 h-2.5 rounded-full' style='width: {$percentage}%'></div>";
+                                    echo "</div>";
+                                    echo "</div>";
+                                } else {
+                                    echo "N/A";
+                                }
+                                echo "</td>";
                                 
                                 // Status with color coding
                                 $status_class = '';
@@ -151,25 +228,29 @@ $conn->close();
                                     "event" => $row['event_topic'],
                                     "company" => $row['company_name'],
                                     "unit" => $row['unit'],
-                                    "amount" => $amount,
+                                    "requestedAmount" => $requested_display,
+                                    "receivedBudget" => $received_display,
+                                    "difference" => $difference_display,
+                                    "percentage" => round($percentage),
                                     "sponsorshipType" => $row['sponsorship_type'],
                                     "location" => $row['location'],
                                     "audience" => $row['target_audience'],
                                     "message" => $row['message'],
                                     "requestDate" => $row['request_date'],
                                     "status" => $row['status'],
-                                    "notes" => $notes,
-                                    "budget" => $budget['total_budget'] ?? "Unknown"
+                                    "notes" => $notes
                                 ]) . ")' class='bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700'>Details</button>";
                                 echo "</td>";
                                 
                                 echo "</tr>";
-                                
-                                $stmt->close();
-                                $conn->close();
                             }
+                            
+                            $stmt->close();
+                            $conn->close();
                         } else {
-                            echo "<tr><td colspan='7' class='px-4 py-3 text-center text-gray-500'>No sponsorship requests found</td></tr>";
+                            echo "<tr><td colspan='9' class='px-4 py-3 text-center text-gray-500'>No sponsorship requests found</td></tr>";
+                            $totalRequested = 0;
+                            $totalReceived = 0;
                         }
                         ?>
                     </tbody>
@@ -206,8 +287,92 @@ $conn->close();
             });
         <?php endif; ?>
 
+        // Update totals in the summary section
+        document.getElementById('totalRequested').textContent = '$<?php echo number_format($totalRequested, 2); ?>';
+        document.getElementById('totalReceived').textContent = '$<?php echo number_format($totalReceived, 2); ?>';
+        document.getElementById('fundingGap').textContent = '$<?php echo number_format($totalRequested - $totalReceived, 2); ?>';
+
+        // Set up the chart
+        const ctx = document.getElementById('sponsorshipChart').getContext('2d');
+        const sponsorshipChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode($chartLabels); ?>,
+                datasets: [
+                    {
+                        label: 'Requested Amount',
+                        data: <?php echo json_encode($requestedAmounts); ?>,
+                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Received Amount',
+                        data: <?php echo json_encode($receivedAmounts); ?>,
+                        backgroundColor: 'rgba(75, 192, 192, 0.7)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: {
+                    duration: 1500,
+                    easing: 'easeInOutQuart'
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Amount ($)'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Events'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
         function viewDetails(details) {
             const detailsContent = document.getElementById('detailsContent');
+            
+            // Calculate funding status class and message
+            let fundingStatusClass = 'bg-yellow-100 text-yellow-800';
+            let fundingStatusMsg = 'Partially Funded';
+            
+            if (details.percentage >= 100) {
+                fundingStatusClass = 'bg-green-100 text-green-800';
+                fundingStatusMsg = 'Fully Funded';
+            } else if (details.percentage <= 0) {
+                fundingStatusClass = 'bg-red-100 text-red-800';
+                fundingStatusMsg = 'Not Funded';
+            }
             
             // Format the details content with nice styling
             detailsContent.innerHTML = `
@@ -227,14 +392,31 @@ $conn->close();
                         <p>${details.unit}</p>
                     </div>
                     
+                    <div class="col-span-2 bg-gray-50 p-3 rounded-lg">
+                        <div class="flex justify-between items-center mb-2">
+                            <p class="font-semibold text-gray-700">Funding Progress</p>
+                            <span class="px-2 py-1 rounded-full text-xs font-medium ${fundingStatusClass}">${fundingStatusMsg}</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-4">
+                            <div class="bg-blue-600 h-4 rounded-full text-xs text-white text-center leading-4" style="width: ${details.percentage}%">
+                                ${details.percentage}%
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="border-r pr-4">
-                        <p class="font-semibold text-gray-700">Sponsorship Amount</p>
-                        <p>${details.amount !== "Pending" ? "$" + details.amount : details.amount}</p>
+                        <p class="font-semibold text-gray-700">Requested Amount</p>
+                        <p class="text-blue-600 font-medium">${details.requestedAmount}</p>
                     </div>
                     
                     <div>
-                        <p class="font-semibold text-gray-700">Unit Budget</p>
-                        <p>${details.budget !== "Unknown" ? "$" + details.budget : details.budget}</p>
+                        <p class="font-semibold text-gray-700">Received Budget</p>
+                        <p class="text-green-600 font-medium">${details.receivedBudget}</p>
+                    </div>
+                    
+                    <div class="col-span-2">
+                        <p class="font-semibold text-gray-700">Difference</p>
+                        <p class="${parseFloat(details.difference.replace(/[^0-9.-]+/g, '')) < 0 ? 'text-green-600' : 'text-red-600'} font-medium">${details.difference}</p>
                     </div>
                     
                     <div class="border-r pr-4">
@@ -254,7 +436,7 @@ $conn->close();
                     
                     <div>
                         <p class="font-semibold text-gray-700">Status</p>
-                        <p class="font-medium ${details.status === 'accepted' ? 'text-green-600' : details.status === 'declined' ? 'text-red-600' : 'text-yellow-600'}">${details.status.charAt(0).toUpperCase() + details.status.slice(1)}</p>
+                        <p class="font-medium ${details.status === 'approved' ? 'text-green-600' : details.status === 'declined' ? 'text-red-600' : 'text-yellow-600'}">${details.status.charAt(0).toUpperCase() + details.status.slice(1)}</p>
                     </div>
                     
                     <div class="col-span-2">
