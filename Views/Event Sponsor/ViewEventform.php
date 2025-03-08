@@ -179,15 +179,30 @@ switch ($requestData["status"]) {
     <!-- Status Update Script -->
     <script>
 function updateStatus(requestId, status) {
-    if (confirm("Are you sure you want to " + (status === 'accepted' ? 'accepted' : 'reject') + " this request?")) {
+    if (confirm("Are you sure you want to " + (status === 'accepted' ? 'accept' : 'reject') + " this request?")) {
         // Send AJAX request to update status
         const xhr = new XMLHttpRequest();
         xhr.open("POST", "../../Controller/Sponsor/update_status.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
             if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                // Redirect back to requests page on success
-                window.location.href = 'Request.php';
+                try {
+                    const response = JSON.parse(this.responseText);
+                    if (response.status === "success") {
+                        if (response.redirect) {
+                            // Redirect to the Sponzingdocs page if status is accepted
+                            window.location.href = response.redirect;
+                        } else {
+                            // Redirect back to requests page for other statuses
+                            window.location.href = 'Request.php';
+                        }
+                    } else {
+                        alert("Error: " + response.message);
+                    }
+                } catch (e) {
+                    // Fallback for backward compatibility
+                    window.location.href = 'Request.php';
+                }
             }
         };
         xhr.send("request_id=" + requestId + "&status=" + status);

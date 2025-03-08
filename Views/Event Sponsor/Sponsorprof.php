@@ -76,6 +76,7 @@ $canEditCompanyName = ($sponsor['company_status'] === 'Main');
             <a href="../home.php" class="bg-blue-700 p-3 rounded text-center">Home</a>
             <a href="#" class="bg-blue-700 p-3 rounded text-center">Profile</a>
             <a href="Request.php" class="bg-blue-700 p-3 rounded text-center">Sponsorship Requests</a>
+            <a href="BudgetManagement.php" class="bg-blue-700 p-3 rounded text-center">Sponsorship Budget Management</a>
         </nav>
         <div class="mt-auto w-full">
             <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>

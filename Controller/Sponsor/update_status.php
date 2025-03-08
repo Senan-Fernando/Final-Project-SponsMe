@@ -46,18 +46,23 @@ if ($result && $result->num_rows > 0) {
         $stmt->bind_param("si", $status, $request_id);
         
         if ($stmt->execute()) {
-            echo "Success: Status updated to " . $status;
+            if ($status === 'accepted') {
+                // Redirect to Sponzingdocs page if status is accepted
+                echo json_encode(["status" => "success", "redirect" => "Sponzingdocs.php?id=" . $request_id]);
+            } else {
+                echo json_encode(["status" => "success", "message" => "Status updated to " . $status]);
+            }
         } else {
             header('HTTP/1.1 500 Internal Server Error');
-            echo "Error: " . $conn->error;
+            echo json_encode(["status" => "error", "message" => $conn->error]);
         }
     } else {
         header('HTTP/1.1 403 Forbidden');
-        echo "Error: You do not have permission to update this request";
+        echo json_encode(["status" => "error", "message" => "You do not have permission to update this request"]);
     }
 } else {
     header('HTTP/1.1 404 Not Found');
-    echo "Error: Sponsor not found for this email";
+    echo json_encode(["status" => "error", "message" => "Sponsor not found for this email"]);
 }
 $conn->close();
 ?>
