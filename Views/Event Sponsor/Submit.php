@@ -18,7 +18,7 @@
     <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
         <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
         <nav class="flex flex-col gap-4">
-            <a onclick="window.location.href='../home.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
+            <a onclick="window.location.href='../index.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
             <a onclick="window.location.href='Sponsorprof.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
         </nav>
         <div class="mt-auto">

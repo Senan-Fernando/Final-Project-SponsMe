@@ -10,7 +10,7 @@
 </head>
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center p-4">
     <div class="absolute top-4 left-4 text-black text-xl font-bold">
-        <a href='../home.php' class='text-black hover:text'>SponsMe</a>
+        <a href='../index.php' class='text-black hover:text'>SponsMe</a>
     </div>
    
     <div style="background-color: #1F509A;" class="rounded-lg shadow-lg p-6 w-full max-w-lg">

@@ -155,8 +155,8 @@ $conn->close();
             <div class="overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-32">
                 <ul class="mt-1 space-y-1">
                     <li>
-                        <a href="../home.php" class="flex items-center p-3 rounded-lg transition-all duration-200 
-                           <?php echo basename($_SERVER['PHP_SELF']) == 'home.php' ? 'bg-blue-700 shadow-md' : 'hover:bg-blue-700/50'; ?>">
+                        <a href="../index.php" class="flex items-center p-3 rounded-lg transition-all duration-200 
+                           <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'bg-blue-700 shadow-md' : 'hover:bg-blue-700/50'; ?>">
                             <i class="fas fa-home w-6"></i>
                             <span class="ml-3">Dashboard</span>
                         </a>

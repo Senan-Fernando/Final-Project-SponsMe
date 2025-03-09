@@ -11,7 +11,7 @@
 </head>
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex justify-center items-center p-4">
     <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href='../home.php' class='text-black hover:text'>SponsMe</a>
+        <a href='../index.php' class='text-black hover:text'>SponsMe</a>
     </div>
 
     <!-- Edit Profile Form Container -->
