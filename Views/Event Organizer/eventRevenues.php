@@ -10,8 +10,8 @@ if (!isset($_SESSION['userId']) || $_SESSION['userRole'] !== 'organizer') {
 
 $organizer_id = $_SESSION['userId'];
 
-// Fetch all sponsorship requests for this organizer
-$query = "SELECT sr.*, s.company_name, s.unit as sponsor_unit 
+// Fetch all sponsorship requests for this organizer with requested_amount included
+$query = "SELECT sr.*, sr.requested_amount as initial_requested, s.company_name, s.unit as sponsor_unit 
           FROM sponsorship_requests sr
           JOIN sponsors s ON sr.sponsor_id = s.id
           WHERE sr.organizer_id = ?
@@ -38,8 +38,67 @@ if (isset($_SESSION['message']) && isset($_SESSION['alert_type'])) {
 $chartLabels = [];
 $requestedAmounts = [];
 $receivedAmounts = [];
+$totalRequested = 0;
+$totalReceived = 0;
 
-// Close connection
+// Process data for chart and summary statistics
+if ($requests->num_rows > 0) {
+    // Need to reconnect for the loop since we'll be fetching additional data
+    $conn_loop = new mysqli($servername, $username, $password, $database);
+    
+    while ($row = $requests->fetch_assoc()) {
+        // Fetch associated sponsorship details
+        $details_query = "SELECT amount FROM sponsorship_details WHERE request_id = ?";
+        $stmt_details = $conn_loop->prepare($details_query);
+        $stmt_details->bind_param("i", $row['id']);
+        $stmt_details->execute();
+        $details_result = $stmt_details->get_result();
+        $details = $details_result->fetch_assoc();
+        
+        // Fetch actual received amount from sponsorship_budget
+        $budget_query = "SELECT SUM(amount) as total_budget FROM sponsorship_budget 
+                         WHERE sponsor_id = ? AND unit = ?";
+        $stmt_budget = $conn_loop->prepare($budget_query);
+        $stmt_budget->bind_param("is", $row['sponsor_id'], $row['sponsor_unit']);
+        $stmt_budget->execute();
+        $budget_result = $stmt_budget->get_result();
+        $budget = $budget_result->fetch_assoc();
+        
+        // Use initial_requested from sponsorship_requests
+        $requested_amount = floatval($row['initial_requested']);
+        
+        // Use amount from sponsorship_details if available, otherwise use details amount
+        $details_amount = isset($details['amount']) ? floatval($details['amount']) : 0;
+        
+        // Use received amount from sponsorship_budget
+        $received_budget = isset($budget['total_budget']) ? floatval($budget['total_budget']) : 0;
+        
+        // Add to totals for summary
+        if ($requested_amount > 0) {
+            $totalRequested += $requested_amount;
+        }
+        if ($received_budget > 0) {
+            $totalReceived += $received_budget;
+        }
+        
+        // Add data for chart if we have meaningful data
+        if ($row['event_topic'] && ($requested_amount > 0 || $received_budget > 0)) {
+            $chartLabels[] = $row['event_topic'];
+            $requestedAmounts[] = $requested_amount;
+            $receivedAmounts[] = $received_budget;
+        }
+        
+        // Calculate the difference (could be used for updating the budget table if needed)
+        $difference = $requested_amount - $received_budget;
+        
+        $stmt_details->close();
+        $stmt_budget->close();
+    }
+    
+    $conn_loop->close();
+}
+
+// Close the main connection
 $stmt->close();
 $conn->close();
 ?>
@@ -227,7 +286,7 @@ $conn->close();
 
             <!-- Events and Revenue Table -->
             <div class="overflow-x-auto">
-                <table class="min-w-full bg-white rounded-lg overflow-hidden">
+            <table class="min-w-full bg-white rounded-lg overflow-hidden">
                     <thead class="bg-gray-100">
                         <tr>
                             <th class="px-4 py-3 text-left text-gray-700">Event</th>
@@ -243,49 +302,42 @@ $conn->close();
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         <?php
+                        // Reconnect to fetch data for the table
+                        $conn = new mysqli($servername, $username, $password, $database);
+                        
+                        // Re-run the query to reset the result set
+                        $query = "SELECT sr.*, sr.requested_amount as initial_requested, s.company_name, s.unit as sponsor_unit 
+                                  FROM sponsorship_requests sr
+                                  JOIN sponsors s ON sr.sponsor_id = s.id
+                                  WHERE sr.organizer_id = ?
+                                  ORDER BY sr.request_date DESC";
+                        $stmt = $conn->prepare($query);
+                        $stmt->bind_param("i", $organizer_id);
+                        $stmt->execute();
+                        $requests = $stmt->get_result();
+                        
                         if ($requests->num_rows > 0) {
-                            $totalRequested = 0;
-                            $totalReceived = 0;
-                            
-                            // Reconnect to the database
-                            $conn = new mysqli($servername, $username, $password, $database);
-                            
                             while ($row = $requests->fetch_assoc()) {
                                 // Fetch associated sponsorship details
-                                // Fetch sponsorship details for this request
                                 $details_query = "SELECT * FROM sponsorship_details WHERE request_id = ?";
-                                $stmt = $conn->prepare($details_query);
-                                $stmt->bind_param("i", $row['id']);
-                                $stmt->execute();
-                                $details = $stmt->get_result()->fetch_assoc();
+                                $stmt_details = $conn->prepare($details_query);
+                                $stmt_details->bind_param("i", $row['id']);
+                                $stmt_details->execute();
+                                $details = $stmt_details->get_result()->fetch_assoc();
                                 
-                                // Calculate total budget for this sponsor's unit
+                                // Calculate total budget received for this sponsor's unit
                                 $budget_query = "SELECT SUM(amount) as total_budget FROM sponsorship_budget 
                                                  WHERE sponsor_id = ? AND unit = ?";
-                                $stmt = $conn->prepare($budget_query);
-                                $stmt->bind_param("is", $row['sponsor_id'], $row['sponsor_unit']);
-                                $stmt->execute();
-                                $budget = $stmt->get_result()->fetch_assoc();
+                                $stmt_budget = $conn->prepare($budget_query);
+                                $stmt_budget->bind_param("is", $row['sponsor_id'], $row['sponsor_unit']);
+                                $stmt_budget->execute();
+                                $budget = $stmt_budget->get_result()->fetch_assoc();
                                 
-                                $requested_amount = isset($details['amount']) ? floatval($details['amount']) : 0;
+                                // Use initial_requested from the request table
+                                $requested_amount = floatval($row['initial_requested']);
                                 $received_budget = isset($budget['total_budget']) ? floatval($budget['total_budget']) : 0;
                                 $difference = $requested_amount - $received_budget;
                                 $percentage = ($requested_amount > 0) ? min(100, max(0, ($received_budget / $requested_amount) * 100)) : 0;
-                                
-                                // Add to totals for summary
-                                if($requested_amount > 0) {
-                                    $totalRequested += $requested_amount;
-                                }
-                                if($received_budget > 0) {
-                                    $totalReceived += $received_budget;
-                                }
-                                
-                                // Add data for chart
-                                if($row['event_topic'] && ($requested_amount > 0 || $received_budget > 0)) {
-                                    $chartLabels[] = $row['event_topic'];
-                                    $requestedAmounts[] = $requested_amount;
-                                    $receivedAmounts[] = $received_budget;
-                                }
                                 
                                 $document = isset($details['document_path']) ? $details['document_path'] : "None";
                                 $notes = isset($details['notes']) ? $details['notes'] : "No notes";
@@ -298,7 +350,7 @@ $conn->close();
                                 echo "<tr>";
                                 echo "<td class='px-4 py-3'>" . htmlspecialchars($row['event_topic']) . " (" . htmlspecialchars($row['event_type']) . ")</td>";
                                 echo "<td class='px-4 py-3'>" . htmlspecialchars($row['company_name']) . "</td>";
-                                echo "<td class='px-4 py-3'>" . htmlspecialchars($row['unit']) . "</td>";
+                                echo "<td class='px-4 py-3'>" . htmlspecialchars($row['sponsor_unit']) . "</td>";
                                 echo "<td class='px-4 py-3'>" . $requested_display . "</td>";
                                 echo "<td class='px-4 py-3'>" . $received_display . "</td>";
                                 
@@ -346,7 +398,7 @@ $conn->close();
                                 echo "<button type='button' onclick='viewDetails(" . json_encode([
                                     "event" => $row['event_topic'],
                                     "company" => $row['company_name'],
-                                    "unit" => $row['unit'],
+                                    "unit" => $row['sponsor_unit'],
                                     "requestedAmount" => $requested_display,
                                     "receivedBudget" => $received_display,
                                     "difference" => $difference_display,
@@ -362,15 +414,16 @@ $conn->close();
                                 echo "</td>";
                                 
                                 echo "</tr>";
+                                
+                                $stmt_details->close();
+                                $stmt_budget->close();
                             }
-                            
-                            $stmt->close();
-                            $conn->close();
                         } else {
                             echo "<tr><td colspan='9' class='px-4 py-3 text-center text-gray-500'>No sponsorship requests found</td></tr>";
-                            $totalRequested = 0;
-                            $totalReceived = 0;
                         }
+                        
+                        $stmt->close();
+                        $conn->close();
                         ?>
                     </tbody>
                 </table>

@@ -131,24 +131,28 @@ switch ($requestData["status"]) {
                 </div>
             </div>
 
-            <!-- Sponsorship Details -->
-            <div class="bg-blue-800 rounded-lg p-4 mb-6">
-                <h4 class="text-xl font-semibold text-white mb-3">Sponsorship Details</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="mb-3">
-                        <label class="block text-white font-medium mb-1">Sponsorship Type</label>
-                        <input type="text" class="form-control" value="<?php echo $requestData['sponsorship_type']; ?>" readonly>
-                    </div>
-                    <div class="mb-3">
-                        <label class="block text-white font-medium mb-1">Target Audience</label>
-                        <input type="text" class="form-control" value="<?php echo $requestData['target_audience']; ?>" readonly>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="block text-white font-medium mb-1">Message</label>
-                    <textarea class="form-control" rows="4" readonly><?php echo $requestData['message']; ?></textarea>
-                </div>
-            </div>
+<!-- Sponsorship Details -->
+<div class="bg-blue-800 rounded-lg p-4 mb-6">
+    <h4 class="text-xl font-semibold text-white mb-3">Sponsorship Details</h4>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="mb-3">
+            <label class="block text-white font-medium mb-1">Sponsorship Type</label>
+            <input type="text" class="form-control" value="<?php echo $requestData['sponsorship_type']; ?>" readonly>
+        </div>
+        <div class="mb-3">
+            <label class="block text-white font-medium mb-1">Target Audience</label>
+            <input type="text" class="form-control" value="<?php echo $requestData['target_audience']; ?>" readonly>
+        </div>
+        <div class="mb-3">
+            <label class="block text-white font-medium mb-1">Requested Amount</label>
+            <input type="text" class="form-control" value="<?php echo number_format($requestData['requested_amount'], 2); ?>" readonly>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="block text-white font-medium mb-1">Message</label>
+        <textarea class="form-control" rows="4" readonly><?php echo $requestData['message']; ?></textarea>
+    </div>
+</div>
 
             <!-- Action Buttons -->
             <div class="flex flex-col md:flex-row justify-between gap-4">

@@ -52,42 +52,49 @@ $error_message = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validate and sanitize inputs
     $message = trim($_POST['message']);
-
-    // Get event data from session
-    $location = $event_data['location'];
-    $event_type = $event_data['event_type'];
-    $event_topic = $event_data['event_topic'];
-    $sponsorship_type = $event_data['sponsorship_type'];
-    $target_audience = $event_data['target_audience'];
-    $unit = $sponsor['unit'];
-
-    // Insert the request into the database
-    $insert_query = "INSERT INTO `sponsorship_requests` 
-                (`organizer_id`, `sponsor_id`, `unit`, `location`, `event_type`, 
-                 `event_topic`, `sponsorship_type`, `target_audience`, `message`) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-    $insert_stmt = $conn->prepare($insert_query);
-    $insert_stmt->bind_param(
-        "iisssssss",
-        $organizer_id,
-        $sponsor_id,
-        $unit,
-        $location,
-        $event_type,
-        $event_topic,
-        $sponsorship_type,
-        $target_audience,
-        $message
-    );
-
-    if ($insert_stmt->execute()) {
-        $success_message = "Your sponsorship request has been sent successfully!";
+    $requested_amount = isset($_POST['requested_amount']) ? filter_var($_POST['requested_amount'], FILTER_VALIDATE_FLOAT) : 0;
+    
+    // Validate requested amount
+    if ($requested_amount === false || $requested_amount < 0) {
+        $error_message = "Please enter a valid amount.";
     } else {
-        $error_message = "Failed to send request. Please try again.";
-    }
+        // Get event data from session
+        $location = $event_data['location'];
+        $event_type = $event_data['event_type'];
+        $event_topic = $event_data['event_topic'];
+        $sponsorship_type = $event_data['sponsorship_type'];
+        $target_audience = $event_data['target_audience'];
+        $unit = $sponsor['unit'];
 
-    $insert_stmt->close();
+        // Insert the request into the database
+        $insert_query = "INSERT INTO `sponsorship_requests` 
+                    (`organizer_id`, `sponsor_id`, `unit`, `location`, `event_type`, 
+                     `event_topic`, `sponsorship_type`, `target_audience`, `message`, `requested_amount`) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        $insert_stmt = $conn->prepare($insert_query);
+        $insert_stmt->bind_param(
+            "iisssssssd",
+            $organizer_id,
+            $sponsor_id,
+            $unit,
+            $location,
+            $event_type,
+            $event_topic,
+            $sponsorship_type,
+            $target_audience,
+            $message,
+            $requested_amount
+        );
+
+        if ($insert_stmt->execute()) {
+            $success_message = "Your sponsorship request has been sent successfully!";
+        } else {
+            $error_message = "Failed to send request. Please try again.";
+        }
+
+        $insert_stmt->close();
+    }
 }
 ?>
 
@@ -137,12 +144,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         .social-icon:hover {
             transform: scale(1.2);
         }
+        
+        .amount-section {
+            background-color: #f0f9ff;
+            border-radius: 0.5rem;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
     </style>
 </head>
 
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
 
-    <!-- Sidebar -->
     <!-- Sidebar -->
     <div class="bg-gradient-to-b from-blue-900 to-blue-800 text-white w-full md:w-1/4 p-6 shadow-2xl flex flex-col h-screen fixed md:sticky top-0">
         <!-- Logo and Brand -->
@@ -393,6 +407,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="md:col-span-2">
                                     <label class="block text-gray-700 font-medium mb-2">Target Audience</label>
                                     <input type="text" class="form-control bg-gray-100" value="<?php echo htmlspecialchars($event_data['target_audience']); ?>" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Requested Amount Section -->
+                        <div class="mb-6 amount-section">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3">
+                                <i class="fas fa-money-bill-wave mr-2 text-blue-600"></i>Sponsorship Amount
+                            </h3>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 font-medium mb-2">Requested Amount ($)</label>
+                                    <div class="flex">
+                                        <div class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-700 bg-gray-100 border border-gray-300 rounded-l-lg">
+                                            <i class="fas fa-dollar-sign text-blue-600"></i>
+                                        </div>
+                                        <input type="number" name="requested_amount" step="0.01" min="0" class="rounded-none rounded-r-lg bg-white border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5" placeholder="Enter amount (e.g. 5000.00)" required>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-2">
+                                        <i class="fas fa-info-circle mr-1 text-blue-500"></i> Be realistic with your request based on the scope of your event and the sponsor's capacity.
+                                    </p>
                                 </div>
                             </div>
                         </div>
