@@ -61,7 +61,7 @@ $stmt->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
+<body class="bg-gray-100 min-h-screen flex flex-col md:flex-row">
 
     <!-- Sidebar -->
     <div class="bg-gradient-to-b from-blue-900 to-blue-800 text-white w-full md:w-1/4 p-6 shadow-2xl flex flex-col h-screen fixed md:sticky top-0">
@@ -195,10 +195,11 @@ $stmt->close();
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
+    <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-2xl font-bold text-gray-800 mb-4">All Available Sponsorships</h3>
 
         <!-- Event Details Summary -->
-        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+        <div class="bg-blue-50 p-4 rounded-lg shadow mb-6">
             <h4 class="text-xl font-semibold mb-3">Your Event Details</h4>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
@@ -225,7 +226,7 @@ $stmt->close();
         </ul>
 
         <!-- Search and Filter Section -->
-        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+        <div class="bg-gray-100 rounded-lg shadow-md p-4 mb-6">
             <form method="GET" action="" class="flex flex-col md:flex-row gap-4">
                 <div class="flex-1">
                     <input type="text" name="search" placeholder="Search by company name or event type" 

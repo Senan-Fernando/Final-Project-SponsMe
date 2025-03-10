@@ -89,7 +89,7 @@ $conn->close();
 
 </head>
 
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
+<body class="bg-gray-100 min-h-screen flex flex-col md:flex-row">
 
     <!-- Sidebar -->
 <!-- Sidebar -->
@@ -224,8 +224,9 @@ $conn->close();
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
-        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
-            <h3 class="text-2xl font-bold text-white mb-6">Profile</h3>
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h3 class="text-2xl font-bold text-black mb-6">
+            <i class="fas fa-user text-xl"></i>   Profile</h3>
 
             <!-- Profile Details -->
             <div class="flex flex-col sm:flex-row items-center gap-6 mb-6">
@@ -244,31 +245,31 @@ $conn->close();
             <form>
                 <div class="grid grid-cols-1 gap-4">
                     <div>
-                        <label class="block text-white font-medium mb-2">Crew Name</label>
+                        <label class="block text-black font-medium mb-2">Crew Name</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['crew_name'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">Crew Leader NIC Number</label>
+                        <label class="block text-black font-medium mb-2">Crew Leader NIC Number</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['leader_nic'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">First Name</label>
+                        <label class="block text-black font-medium mb-2">First Name</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['first_name'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">Last Name</label>
+                        <label class="block text-black font-medium mb-2">Last Name</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['last_name'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">Email</label>
+                        <label class="block text-black font-medium mb-2">Email</label>
                         <input type="email" class="form-control" value="<?php echo htmlspecialchars($organizer['email'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">Mobile No.</label>
+                        <label class="block text-black font-medium mb-2">Mobile No.</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['mobile'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-white font-medium mb-2">WhatsApp</label>
+                        <label class="block text-black font-medium mb-2">WhatsApp</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['whatsapp'] ?? "N/A"); ?>" readonly>
                     </div>
                 </div>

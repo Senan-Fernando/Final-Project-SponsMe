@@ -29,77 +29,76 @@ if ($sponsorResult && $sponsorResult->num_rows > 0) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sponsorship Requests</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Sponsor Requests</title>
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .card-hover:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease-in-out;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .request-card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .request-details {
-            flex-grow: 1;
-        }
-
-        .status-pending {
-            background-color: #FFC107;
-            color: #000;
-        }
-
-        .status-accepted {
-            background-color: #28A745;
-            color: #fff;
-        }
-
-        .status-rejected {
-            background-color: #DC3545;
-            color: #fff;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
+<body class="bg-gray-100 min-h-screen flex flex-col md:flex-row">
 
-    <!-- Sidebar -->
-    <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
-        <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
-        <nav class="flex flex-col gap-4">
-            <a onclick="window.location.href='../index.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
-            <a href="#" onclick="window.location.href='Sponsorprof.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a onclick="window.location.href='request.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Sponsorship Requests</a>
-        </nav>
-        <div class="mt-auto">
-            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
-        </div>
+       <!-- Sidebar -->
+<!-- Sidebar/Navbar -->
+<div class="bg-gradient-to-b from-blue-900 to-blue-800 text-white w-full md:w-1/4 p-6 shadow-2xl flex flex-col h-screen fixed md:sticky top-0">
+    <!-- Logo and Brand -->
+    <div class="mb-8 border-b border-blue-700 pb-4">
+        <h2 class="text-3xl font-bold mb-2 text-center md:text-left">
+            <i class="fas fa-handshake me-2"></i>SponsMe
+        </h2>
+        <p class="text-blue-200 text-sm opacity-75 text-center md:text-left">Connecting Events with Sponsors</p>
     </div>
+    
+    <nav class="flex flex-col gap-4 w-full">
+        <a href="../index.php" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            Home
+        </a>
+        <a href="Sponsorprof.php" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Profile
+        </a>
+        <a href="#" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            Sponsorship Requests
+        </a>
+        <a href="BudgetManagement.php" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            Budget Management
+        </a>
+    </nav>
+    
+    <div class="mt-auto w-full pt-6 border-t border-gray-700 mt-8">
+        <a href="../login.php" class="bg-red-700 hover:bg-red-800 transition-colors duration-300 p-4 rounded-lg text-center block flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+            Log Out
+        </a>
+    </div>
+    <!-- App Version -->
+    <div class="mt-3 text-center text-xs text-blue-300 opacity-50">
+            <p>SponsMe v1.0.2</p>
+    </div>
+</div>
+
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
+    <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-2xl font-bold text-gray-800 mb-6">Sponsorship Requests</h3>
 
-        <!-- Tabs -->
-        <ul class="nav nav-tabs mb-4 flex flex-col md:flex-row">
-            <li class="nav-item">
-                <a class="nav-link active" href="Request.php">Sponsorship Requests</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="Submit.php">Submit Forms</a>
-            </li>
-        </ul>
-
         <!-- Filter Controls -->
-        <div class="mb-4 bg-white p-4 rounded-lg shadow">
+        <div class="bg-blue-50 p-4 rounded-lg shadow mb-6">
             <div class="flex flex-col md:flex-row gap-4">
                 <div class="flex-1">
                     <label for="filter-status" class="form-label">Filter by Status</label>

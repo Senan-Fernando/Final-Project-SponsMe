@@ -8,6 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         html {
             scroll-behavior: smooth;
@@ -24,13 +27,17 @@
 
     <!-- Navbar -->
     <nav class="bg-blue-800 p-4 flex justify-between items-center text-white sticky top-0 z-50">
-        <h1 class="text-2xl font-bold">SponsMe</h1>
+        <div>
+            <h1 class="text-2xl font-bold">
+                <i class="fas fa-handshake me-2"></i>SponsMe
+            </h1>
+            <p class="text-blue-200 text-sm opacity-75 text-center md:text-left">Connecting Events with Sponsors</p>
+        </div>
         <div class="flex space-x-4">
-            <a href="#home" class="text-white hover:underline text-sm sm:text-base">Home</a>
-            <a href="#about" class="text-white hover:underline text-sm sm:text-base">About</a>
-            <a href="#how-it-works" class="text-white hover:underline text-sm sm:text-base">How It Works</a>
-            <a href="#profile" class="text-white hover:underline text-sm sm:text-base">Profile</a>
-            <a href="Login.php" class="text-white hover:underline text-sm sm:text-base">Login</a>
+            <a href="#home" class="text-white text-sm sm:text-base">Home</a>
+            <a href="#about" class="text-white text-sm sm:text-base">About</a>
+            <a href="#how-it-works" class="text-white text-sm sm:text-base">How It Works</a>
+            <a href="Login.php" class="text-white text-sm sm:text-base">Login</a>
         </div>
     </nav>
 

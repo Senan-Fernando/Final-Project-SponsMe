@@ -69,7 +69,7 @@ $stmt->close();
 
 </head>
 
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
+<body class="bg-white min-h-screen flex flex-col md:flex-row">
 
     <!-- Sidebar -->
 <!-- Sidebar -->
@@ -204,10 +204,11 @@ $stmt->close();
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
+    <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-2xl font-bold text-gray-800 mb-4">Matched Sponsorships</h3>
 
         <!-- Event Details Summary -->
-        <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+        <div class="bg-blue-50 p-4 rounded-lg shadow mb-6">
             <h4 class="text-xl font-semibold mb-3">Your Event Details</h4>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>

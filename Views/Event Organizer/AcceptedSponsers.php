@@ -50,7 +50,7 @@ $conn->close();
 
 </head>
 
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
+<body class="bg-gray-100 min-h-screen flex flex-col md:flex-row">
 
     <!-- Sidebar -->
 <!-- Sidebar -->
@@ -185,14 +185,8 @@ $conn->close();
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
+    <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-2xl font-bold text-gray-800 mb-6">Accepted Sponsorship</h3>
-
-        <!-- Tabs -->
-        <ul class="nav nav-tabs mb-4 flex flex-col md:flex-row">
-            <li class="nav-item">
-                <a class="nav-link active" href="Accepted.php">Accepted Sponsorships</a>
-            </li>
-        </ul>
 
         <!-- Requests Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
