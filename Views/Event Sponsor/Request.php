@@ -50,46 +50,77 @@ if ($sponsorResult && $sponsorResult->num_rows > 0) {
         <p class="text-blue-200 text-sm opacity-75 text-center md:text-left">Connecting Events with Sponsors</p>
     </div>
     
-    <nav class="flex flex-col gap-4 w-full">
-        <a href="../index.php" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-            </svg>
-            Home
-        </a>
-        <a href="Sponsorprof.php" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            Profile
-        </a>
-        <a href="#" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </svg>
-            Sponsorship Requests
-        </a>
-        <a href="BudgetManagement.php" class="group transition-all duration-300 hover:bg-blue-700 shadow-md bg-blue-700/50 p-4 rounded-lg text-center flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            Budget Management
-        </a>
+    <nav class="flex-1">
+        <!-- Main Category -->
+        <div class="mb-2 group">
+            <div class="flex items-center px-3 py-2 cursor-pointer">
+                <span class="uppercase text-xs font-semibold text-blue-300">Main</span>
+                <i class="fas fa-chevron-down ml-auto text-xs text-blue-300 group-hover:rotate-180 transition-transform duration-300"></i>
+            </div>
+            <div class="overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-32">
+                <ul class="mt-1 space-y-1">
+                    <li>
+                        <a href="../index.php" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-home w-6"></i>
+                            <span class="ml-3">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="Sponsorprof.php" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'profile.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-user-circle w-6"></i>
+                            <span class="ml-3">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Management Category -->
+        <div class="mb-2 group">
+            <div class="flex items-center px-3 py-2 cursor-pointer">
+                <span class="uppercase text-xs font-semibold text-blue-300">Management</span>
+                <i class="fas fa-chevron-down ml-auto text-xs text-blue-300 group-hover:rotate-180 transition-transform duration-300"></i>
+            </div>
+            <div class="overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-48">
+                <ul class="mt-1 space-y-1">
+                    <li>
+                        <a href="#" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'Request.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-calendar-plus w-6"></i>
+                            <span class="ml-3">Sponsorship Requests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="BudgetManagement.php" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'BudgetManagement.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-handshake w-6"></i>
+                            <span class="ml-3">Budget Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
     
-    <div class="mt-auto w-full pt-6 border-t border-gray-700 mt-8">
-        <a href="../login.php" class="bg-red-700 hover:bg-red-800 transition-colors duration-300 p-4 rounded-lg text-center block flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
-            Log Out
+    <!-- Border Line -->
+    <div class="border-t border-blue-700 my-4"></div>
+    
+    <!-- Support & Logout Section -->
+    <div class="mt-auto space-y-2">
+        <a href="Help.php" class="flex items-center p-3 rounded-lg bg-blue-700/30 hover:bg-blue-700 transition-colors <?php echo basename($_SERVER['PHP_SELF']) == 'Help.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+            <i class="fas fa-question-circle w-6"></i>
+            <span class="ml-3">Help</span>
+        </a>
+        <a href="../../Controller/Logout.php" class="flex items-center p-3 rounded-lg bg-red-600 hover:bg-red-700 transition-colors">
+            <i class="fas fa-sign-out-alt w-6"></i>
+            <span class="ml-3">Log Out</span>
         </a>
     </div>
+    
     <!-- App Version -->
     <div class="mt-3 text-center text-xs text-blue-300 opacity-50">
-            <p>SponsMe v1.0.2</p>
+        <p>SponsMe v1.0.2</p>
     </div>
 </div>
+
 
 
     <!-- Main Content -->

@@ -17,13 +17,41 @@ session_start();
     <!-- SweetAlert2 for better alerts -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.19/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .content-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 0.5rem;
+                margin: 0.25rem;
+            }
+            .form-grid {
+                gap: 0.25rem;
+            }
+            .input-field {
+                padding: 0.25rem;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex items-center justify-center p-4">
-    <div class="absolute top-4 left-4 text-white text-xl font-bold">
-        <a href='../index.php' class='text-black hover:text'>SponsMe</a>
-    </div>
-
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+<div class="position-absolute top-0 start-0 m-4">
+        <h1 class="text-2xl font-bold">
+        <i class="fas fa-handshake me-2 custom"></i>SponsMe
+    </h1>
+    <p class="text-gray-800 text-sm opacity-75">Connecting Events with Sponsors</p>
+</div>
     <!-- Display session messages if any -->
     <?php
     if (isset($_SESSION['error'])) {
@@ -49,54 +77,62 @@ session_start();
         unset($_SESSION['success']);
     }
     ?>
-
-    <!-- Registration Form Container -->
-    <div class="bg-[#1F509A] rounded-lg shadow-lg p-6 w-full max-w-lg">
-        <h2 class="text-2xl font-bold text-center text-white mb-6">Register Profile</h2>
+<!-- Split Screen Container -->
+<div class="container mx-auto px-4 mt-2">
+    <div class="row justify-content-center align-items-center">
+    <!-- Left Side - Image (hidden on very small screens) -->
+        <div class="md:w-1/2 flex items-center justify-center p-2 hidden sm:flex">
+            <img src="../../Static Assets/images/spons.png" alt="Sponsorship" class="max-w-full max-h-full object-cover rounded-lg" />
+        </div>
+        
+        <!-- Right Side - Form -->
+        <div class="w-full md:w-1/2 flex items-center justify-center py-2 px-3">
+        <!-- Registration Form Container -->
+            <div class="bg-white rounded-lg shadow-lg p-4 w-full max-w-sm form-container">
+                <h2 class="text-xl font-bold text-center text-black mb-3">Register Profile</h2>
 
         <!-- Company Type Selection -->
-        <div class="flex justify-center space-x-6 mb-6">
-            <button id="existingCompany" class="px-6 py-3 border border-white rounded-lg text-white cursor-pointer transition duration-300 bg-blue-500">
+        <div class="flex justify-center space-x-4 mb-3">
+            <button id="existingCompany" class="px-3 py-2 border border-black rounded-lg text-gray-200 cursor-pointer transition duration-300 bg-blue-600">
                 Existing Company
             </button>
-            <button id="newCompany" class="px-6 py-3 border border-white rounded-lg text-white cursor-pointer transition duration-300"
-                onclick="window.location.href='RegNewCompany.php'">
+            <button id="newCompany" class="px-3 py-2 border border-black rounded-lg text-gray-800 cursor-pointer transition duration-300"onclick="window.location.href='RegNewCompany.php'">
                 New Company
             </button>
         </div>
 
-        <!-- Input Fields -->
-        <form id="registrationForm" action="../../Controller/Sponsor/ExistRegSponsController.php" method="POST" class="grid gap-4">
+                <!-- Input Fields -->
+        <form id="registrationForm" action="../../Controller/Sponsor/ExistRegSponsController.php" method="POST" class="grid gap-2">
             <!-- Company Registration Code with Fetch Button -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 items-center">
                 <!-- Company Registration Code Input -->
                 <div class="col-span-2">
                     <input id="companyRegistrationCode" name="company_registration_code" type="text"
                         placeholder="Company Registration Code"
-                        class="form-control h-11 px-3 py-2 border border-gray-300 rounded-md w-full" required>
+                        class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
                 </div>
 
                 <!-- Check Company Button -->
                 <div class="col-span-1 flex justify-center sm:justify-start">
                     <button type="button" onclick="fetchCompanyName()"
-                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded-md text-sm">
+                        class="bg-green-600 hover:bg-green-700 text-white px-2 py-2 rounded-md text-xs">
                         Check Company
                     </button>
                 </div>
             </div>
 
             <!-- Company Name & Unit Name Fields -->
-            <input id="companyName" name="companyname" type="text" placeholder="Company Name" class="form-control h-11 px-3 py-2 border border-gray-300 rounded-md w-full" required readonly>
-            <input id="unitname" name="unitname" type="text" placeholder="Unit Name" class="form-control h-11 px-3 py-2 border border-gray-300 rounded-md w-full" required>
+            <input id="companyName" name="companyname" type="text" placeholder="Company Name" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required readonly>
+            <input id="unitname" name="unitname" type="text" placeholder="Unit Name" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
 
             <!-- Address Field -->
             <div class="grid grid-cols-1">
-                <input id="address" name="address" type="text" placeholder="Address" class="form-control h-11" required>
+                <input id="address" name="address" type="text" placeholder="Address" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input name="emp_id" type="text" placeholder="Emp ID of the unit incharge" class="form-control" required>
-                <select name="sponsor_events" class="form-select" required>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input name="emp_id" type="text" placeholder="Emp ID of the unit incharge" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
+                <select name="sponsor_events" class="form-select h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
                     <option selected disabled>Sponsor Events</option>
                     <option value="Concerts">Concerts</option>
                     <option value="Charity">Charity</option>
@@ -105,34 +141,37 @@ session_start();
                 </select>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input name="email" type="email" placeholder="Email" class="form-control" required>
-                <input name="mobile_no" type="text" placeholder="Contact No." class="form-control" required>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input name="email" type="email" placeholder="Email" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
+                <input name="mobile_no" type="text" placeholder="Contact No." class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input name="facebook" type="text" placeholder="Facebook Profile Link" class="form-control">
-                <input name="instagram" type="text" placeholder="Instagram Profile Link" class="form-control">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input name="facebook" type="text" placeholder="Facebook Profile Link" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm">
+                <input name="instagram" type="text" placeholder="Instagram Profile Link" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm">
             </div>
 
             <!-- Password Fields -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <input id="password" name="password" type="password" placeholder="Password" class="form-control" required>
-                <input id="confirm_password" name="confirm_password" type="password" placeholder="Confirm Password" class="form-control" required>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <input id="password" name="password" type="password" placeholder="Password" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
+                <input id="confirm_password" name="confirm_password" type="password" placeholder="Confirm Password" class="form-control h-9 px-2 py-1 border border-gray-300 rounded-md w-full text-sm" required>
             </div>
 
             <!-- Password Match Message -->
-            <div id="passwordMessage" class="text-center text-sm mt-2"></div>
+            <div id="passwordMessage" class="text-center text-xs mt-1"></div>
 
             <!-- Submit Button -->
-            <button type="button" onclick="validatePasswords()" class="w-full bg-green-600 hover:bg-green-700 text-white py-2 rounded-lg">Sign Up</button>
+            <button type="button" onclick="validatePasswords()" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg text-sm">Sign Up</button>
         </form>
 
-        <!-- Login Link -->
-        <p class="text-center text-gray-400 mt-4">
-            Or <a href="../Login.php" class="text-blue-400 hover:underline">Log In</a>
-        </p>
+                <!-- Login Link -->
+                <p class="text-center text-gray-400 mt-2 ">
+                    Or <a href="../Login.php" class="text-blue-400 hover:underline">Log In</a>
+                </p>
+            </div>
+        </div>
     </div>
+    
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

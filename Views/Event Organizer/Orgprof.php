@@ -243,7 +243,7 @@ $conn->close();
             </div>
 
             <form>
-                <div class="grid grid-cols-1 gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <div>
                         <label class="block text-black font-medium mb-2">Crew Name</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['crew_name'] ?? "N/A"); ?>" readonly>
@@ -261,10 +261,6 @@ $conn->close();
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['last_name'] ?? "N/A"); ?>" readonly>
                     </div>
                     <div>
-                        <label class="block text-black font-medium mb-2">Email</label>
-                        <input type="email" class="form-control" value="<?php echo htmlspecialchars($organizer['email'] ?? "N/A"); ?>" readonly>
-                    </div>
-                    <div>
                         <label class="block text-black font-medium mb-2">Mobile No.</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['mobile'] ?? "N/A"); ?>" readonly>
                     </div>
@@ -272,6 +268,10 @@ $conn->close();
                         <label class="block text-black font-medium mb-2">WhatsApp</label>
                         <input type="text" class="form-control" value="<?php echo htmlspecialchars($organizer['whatsapp'] ?? "N/A"); ?>" readonly>
                     </div>
+                </div>
+                <div class="grid grid-cols-1 gap-4">
+                    <label class="block text-black font-medium mb-2">Email</label>
+                    <input type="email" class="form-control" value="<?php echo htmlspecialchars($organizer['email'] ?? "N/A"); ?>" readonly>
                 </div>
 
                 <!-- Action Buttons -->
