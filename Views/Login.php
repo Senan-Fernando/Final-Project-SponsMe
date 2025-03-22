@@ -13,17 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        .hover-up {
-            transition: transform 0.3s ease;
-        }
-
-        .hover-up:hover {
-            transform: translateY(-5px);
-        }
-
-        .custom {
-            color: black;
-        }
+        .hover-up { transition: transform 0.3s ease; }
+        .hover-up:hover { transform: translateY(-5px); }
+        .custom { color: black; }
     </style>
 </head>
 
@@ -78,10 +70,81 @@
         </div>
     </div>
 
+    <!-- Phone Number Modal -->
+    <div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="phoneModalLabel">Reset Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="phoneForm">
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Enter your phone number</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="94711234567" required>
+                            <input type="hidden" id="resetEmail" name="email">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Send OTP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- OTP Modal -->
+    <div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="otpModalLabel">Verify OTP</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="otpForm">
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">Enter the OTP sent to your phone</label>
+                            <input type="text" class="form-control" id="otp" name="otp" required>
+                            <input type="hidden" id="otpEmail" name="email">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Password Modal -->
+    <div class="modal fade" id="newPasswordModal" tabindex="-1" aria-labelledby="newPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newPasswordModalLabel">Set New Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newPasswordForm">
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="newPassword" name="new_password" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required>
+                        </div>
+                        <input type="hidden" id="passwordEmail" name="email">
+                        <button type="submit" class="btn btn-primary w-100">Reset Password</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        let userEmail = ''; // To store email for the reset process
+
         document.getElementById("loginForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Prevent default form submission
-
             let formData = new FormData(this);
 
             fetch("../Controller/LoginController.php", {
@@ -97,13 +160,19 @@
                     Swal.fire({
                         icon: data.icon,
                         title: data.title,
-                        text: data.text
-                    }).then(() => {
+                        text: data.text,
+                        showCancelButton: data.icon === 'error', // Show cancel button only on error
+                        confirmButtonText: data.icon === 'error' ? 'Reset Password' : 'OK',
+                        cancelButtonText: 'Try Again'
+                    }).then((result) => {
                         if (data.redirect) {
                             window.location.href = data.redirect;
+                        } else if (result.isConfirmed && data.icon === 'error') {
+                            userEmail = document.getElementById('email').value; // Store email
+                            document.getElementById('resetEmail').value = userEmail;
+                            new bootstrap.Modal(document.getElementById('phoneModal')).show();
                         }
                     });
-
                 } catch (error) {
                     console.error("Invalid JSON:", text);
                     throw new Error("Invalid JSON response from server");
@@ -117,6 +186,88 @@
                     text: 'Something went wrong. Please try again!',
                     confirmButtonText: 'OK'
                 });
+            });
+        });
+
+        // Phone Form Submission
+        document.getElementById("phoneForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch("../Controller/SendOTPController.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire({
+                    icon: data.icon,
+                    title: data.title,
+                    text: data.text
+                }).then(() => {
+                    if (data.icon === 'success') {
+                        document.getElementById('otpEmail').value = userEmail;
+                        bootstrap.Modal.getInstance(document.getElementById('phoneModal')).hide();
+                        new bootstrap.Modal(document.getElementById('otpModal')).show();
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                Swal.fire({ icon: 'error', title: 'Error', text: 'Something went wrong!' });
+            });
+        });
+
+        // OTP Form Submission
+        document.getElementById("otpForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch("../Controller/VerifyOTPController.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire({
+                    icon: data.icon,
+                    title: data.title,
+                    text: data.text
+                }).then(() => {
+                    if (data.icon === 'success') {
+                        document.getElementById('passwordEmail').value = userEmail;
+                        bootstrap.Modal.getInstance(document.getElementById('otpModal')).hide();
+                        new bootstrap.Modal(document.getElementById('newPasswordModal')).show();
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                Swal.fire({ icon: 'error', title: 'Error', text: 'Something went wrong!' });
+            });
+        });
+
+        // New Password Form Submission
+        document.getElementById("newPasswordForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            let formData = new FormData(this);
+            fetch("../Controller/ResetPasswordController.php", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                Swal.fire({
+                    icon: data.icon,
+                    title: data.title,
+                    text: data.text
+                }).then(() => {
+                    if (data.icon === 'success') {
+                        bootstrap.Modal.getInstance(document.getElementById('newPasswordModal')).hide();
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                Swal.fire({ icon: 'error', title: 'Error', text: 'Something went wrong!' });
             });
         });
     </script>

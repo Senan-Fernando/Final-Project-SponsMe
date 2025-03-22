@@ -18,6 +18,7 @@ if (!isset($_POST['request_id']) || !isset($_POST['amount'])) {
 $request_id = $_POST['request_id'];
 $amount = floatval($_POST['amount']);
 $notes = isset($_POST['notes']) ? $_POST['notes'] : '';
+$location_details = isset($_POST['location_details']) && !empty($_POST['location_details']) ? $_POST['location_details'] : null;
 
 // Validate amount
 if ($amount <= 0) {
@@ -101,10 +102,10 @@ if ($result && $result->num_rows > 0) {
         }
 
         if (!$upload_error) {
-            
             $conn->begin_transaction();
 
             try {
+                // Ensure the sponsorship_details table exists
                 $createTableQuery = "CREATE TABLE IF NOT EXISTS sponsorship_details (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     request_id INT NOT NULL,
@@ -116,9 +117,19 @@ if ($result && $result->num_rows > 0) {
                     FOREIGN KEY (request_id) REFERENCES sponsorship_requests(id),
                     FOREIGN KEY (sponsor_id) REFERENCES sponsors(id)
                 )";
-
                 $conn->query($createTableQuery);
 
+                // Ensure the sponsorship_requests table has the location_details column
+                $alterTableQuery = "ALTER TABLE sponsorship_requests ADD COLUMN IF NOT EXISTS location_details TEXT NULL";
+                $conn->query($alterTableQuery);
+
+                // Update sponsorship_requests with location_details (optional)
+                $updateQuery = "UPDATE sponsorship_requests SET location_details = ? WHERE id = ?";
+                $stmt = $conn->prepare($updateQuery);
+                $stmt->bind_param("si", $location_details, $request_id);
+                $stmt->execute();
+
+                // Insert into sponsorship_details
                 $insertQuery = "INSERT INTO sponsorship_details (request_id, sponsor_id, amount, document_path, notes) 
                                 VALUES (?, ?, ?, ?, ?)";
                 $stmt = $conn->prepare($insertQuery);
@@ -126,6 +137,7 @@ if ($result && $result->num_rows > 0) {
                 $stmt->execute();
                 $sponsorship_details_id = $conn->insert_id;
 
+                // Insert into sponsorship_budget
                 $current_date = date('Y-m-d');
                 $description = "Sponsorship for event: " . $event_topic;
                 if (!empty($notes)) {
@@ -149,14 +161,11 @@ if ($result && $result->num_rows > 0) {
                 );
                 $budgetStmt->execute();
 
-                
                 $conn->commit();
 
-                
                 header('Location: ../../Views/Event Sponsor/Request.php?success=1&message=Sponsorship details have been successfully submitted and budget updated.');
                 exit();
             } catch (Exception $e) {
-                
                 $conn->rollback();
                 header('HTTP/1.1 500 Internal Server Error');
                 echo "Error: " . $e->getMessage();

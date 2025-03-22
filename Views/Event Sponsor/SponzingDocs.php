@@ -16,7 +16,7 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 
 $request_id = $_GET['id'];
 
-// Get request and organizer details
+// Get request and organizer details, including location_details
 $sql = "SELECT r.*, o.crew_name, o.first_name, o.last_name, o.email 
         FROM sponsorship_requests r
         JOIN organizers o ON r.organizer_id = o.id
@@ -54,6 +54,16 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the button hover effect */
+        #fetchLocation {
+            transition: all 0.3s ease;
+        }
+        #fetchLocation:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
 </head>
 <body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
 
@@ -76,7 +86,7 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
             <!-- Page Header -->
             <div class="mb-6">
                 <h3 class="text-2xl font-bold text-white">Sponsorship Documentation</h3>
-                <p class="text-white mt-2">Complete the sponsorship details for the event: <strong><?php echo $requestData['event_topic']; ?></strong></p>
+                <p class="text-white mt-2">Complete the sponsorship details for the event: <strong><?php echo htmlspecialchars($requestData['event_topic']); ?></strong></p>
             </div>
 
             <!-- Event Summary -->
@@ -84,14 +94,14 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
                 <h4 class="text-xl font-semibold text-white mb-3">Event Summary</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
                     <div>
-                        <p class="mb-1"><i class="bi bi-calendar-event me-2"></i> <strong>Event:</strong> <?php echo $requestData["event_topic"]; ?></p>
-                        <p class="mb-1"><i class="bi bi-people me-2"></i> <strong>Crew Name:</strong> <?php echo $requestData["crew_name"]; ?></p>
-                        <p class="mb-1"><i class="bi bi-person me-2"></i> <strong>Organizer:</strong> <?php echo $requestData["first_name"] . " " . $requestData["last_name"]; ?></p>
+                        <p class="mb-1"><i class="bi bi-calendar-event me-2"></i> <strong>Event:</strong> <?php echo htmlspecialchars($requestData["event_topic"]); ?></p>
+                        <p class="mb-1"><i class="bi bi-people me-2"></i> <strong>Crew Name:</strong> <?php echo htmlspecialchars($requestData["crew_name"]); ?></p>
+                        <p class="mb-1"><i class="bi bi-person me-2"></i> <strong>Organizer:</strong> <?php echo htmlspecialchars($requestData["first_name"] . " " . $requestData["last_name"]); ?></p>
                     </div>
                     <div>
-                        <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> <strong>Location:</strong> <?php echo $requestData["location"]; ?></p>
-                        <p class="mb-1"><i class="bi bi-tag me-2"></i> <strong>Type:</strong> <?php echo $requestData["event_type"]; ?></p>
-                        <p class="mb-1"><i class="bi bi-calendar me-2"></i> <strong>Request Date:</strong> <?php echo $requestDate; ?></p>
+                        <p class="mb-1"><i class="bi bi-geo-alt me-2"></i> <strong>Location:</strong> <?php echo htmlspecialchars($requestData["location"]); ?></p>
+                        <p class="mb-1"><i class="bi bi-tag me-2"></i> <strong>Type:</strong> <?php echo htmlspecialchars($requestData["event_type"]); ?></p>
+                        <p class="mb-1"><i class="bi bi-calendar me-2"></i> <strong>Request Date:</strong> <?php echo htmlspecialchars($requestDate); ?></p>
                     </div>
                 </div>
             </div>
@@ -115,9 +125,20 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
                     
                     <div class="mb-3">
                         <label for="notes" class="block text-white font-medium mb-1">Notes (Optional)</label>
-                        <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                        <textarea class="form-control" id="notes" name="notes" rows="3"><?php echo htmlspecialchars($requestData['notes'] ?? ''); ?></textarea>
                     </div>
                     
+                    <div class="mb-3">
+                        <label for="location_details" class="block text-white font-medium mb-1">Location Details (Optional)</label>
+                        <div class="input-group">
+                            <textarea class="form-control" id="location_details" name="location_details" rows="3" placeholder="Paste a Google Maps link or fetch your current location"><?php echo htmlspecialchars($requestData['location_details'] ?? ''); ?></textarea>
+                            <button type="button" class="btn text-white font-semibold bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 rounded-lg px-4 py-2" id="fetchLocation">
+                                <i class="bi bi-geo-alt me-1"></i> Fetch Current Location
+                            </button>
+                        </div>
+                        <small class="text-white opacity-75">Paste a Google Maps link or click the button to fetch your current location with accuracy details.</small>
+                    </div>
+
                     <div class="flex flex-col md:flex-row justify-between gap-4 mt-5">
                         <a href="Request.php" class="btn btn-secondary">
                             <i class="bi bi-arrow-left me-1"></i> Back to Requests
@@ -134,7 +155,7 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Form Validation Script -->
+    <!-- Form Validation and Geolocation Script -->
     <script>
     document.getElementById('sponsorshipForm').addEventListener('submit', function(event) {
         const amount = document.getElementById('amount').value;
@@ -172,6 +193,47 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
         if (!isValid) {
             event.preventDefault();
             alert(errorMessage);
+        }
+    });
+
+    // Fetch current location with high accuracy and include accuracy details
+    document.getElementById('fetchLocation').addEventListener('click', function() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    const accuracy = position.coords.accuracy; // Accuracy in meters
+                    const googleMapsLink = `https://maps.google.com/?q=${latitude},${longitude}`;
+                    const locationDetails = `${googleMapsLink} (Lat: ${latitude.toFixed(6)}, Lon: ${longitude.toFixed(6)}, Accuracy: ${accuracy.toFixed(1)} meters)`;
+                    document.getElementById('location_details').value = locationDetails;
+                },
+                function(error) {
+                    let errorMessage = '';
+                    switch(error.code) {
+                        case error.PERMISSION_DENIED:
+                            errorMessage = "User denied the request for Geolocation.";
+                            break;
+                        case error.POSITION_UNAVAILABLE:
+                            errorMessage = "Location information is unavailable.";
+                            break;
+                        case error.TIMEOUT:
+                            errorMessage = "The request to get user location timed out.";
+                            break;
+                        case error.UNKNOWN_ERROR:
+                            errorMessage = "An unknown error occurred.";
+                            break;
+                    }
+                    alert(errorMessage + "\nPlease enter a Google Maps link manually.");
+                },
+                {
+                    enableHighAccuracy: true, // Enable high accuracy mode
+                    timeout: 10000, // Wait up to 10 seconds
+                    maximumAge: 0 // Do not use cached location
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser. Please enter a Google Maps link manually.");
         }
     });
     </script>
