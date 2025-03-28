@@ -49,6 +49,7 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sponsorship Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -65,34 +66,102 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
         }
     </style>
 </head>
-<body class="bg-gradient-to-r from-blue-500 to-gray-400 min-h-screen flex flex-col md:flex-row">
+<body class="bg-gray-100 min-h-screen flex flex-col md:flex-row">
 
-    <!-- Sidebar -->
-    <div class="bg-blue-900 text-white w-full md:w-1/4 p-6">
-        <h2 class="text-2xl font-bold mb-6 text-center md:text-left">SponsMe</h2>
-        <nav class="flex flex-col gap-4">
-            <a onclick="window.location.href='../index.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Home</a>
-            <a href="#" onclick="window.location.href='Sponsorprof.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Profile</a>
-            <a onclick="window.location.href='Request.php'" class="bg-blue-700 p-3 rounded text-center md:text-left">Sponsorship Requests</a>
-        </nav>
-        <div class="mt-auto">
-            <a href="../login.php" class="bg-blue-700 p-3 rounded text-center block mt-6">Log Out</a>
-        </div>
+ <!-- Sidebar/Navbar -->
+<div class="bg-gradient-to-b from-blue-900 to-blue-800 text-white w-full md:w-1/4 p-6 shadow-2xl flex flex-col h-screen fixed md:sticky top-0">
+    <!-- Logo and Brand -->
+    <div class="mb-8 border-b border-blue-700 pb-4">
+        <h2 class="text-3xl font-bold mb-2 text-center md:text-left">
+            <i class="fas fa-handshake me-2"></i>SponsMe
+        </h2>
+        <p class="text-blue-200 text-sm opacity-75 text-center md:text-left">Connecting Events with Sponsors</p>
     </div>
+    
+    <nav class="flex-1">
+        <!-- Main Category -->
+        <div class="mb-2 group">
+            <div class="flex items-center px-3 py-2 cursor-pointer">
+                <span class="uppercase text-xs font-semibold text-blue-300">Main</span>
+                <i class="fas fa-chevron-down ml-auto text-xs text-blue-300 group-hover:rotate-180 transition-transform duration-300"></i>
+            </div>
+            <div class="overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-32">
+                <ul class="mt-1 space-y-1">
+                    <li>
+                        <a href="../index.php" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-home w-6"></i>
+                            <span class="ml-3">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.php" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'profile.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-user-circle w-6"></i>
+                            <span class="ml-3">Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Management Category -->
+        <div class="mb-2 group">
+            <div class="flex items-center px-3 py-2 cursor-pointer">
+                <span class="uppercase text-xs font-semibold text-blue-300">Management</span>
+                <i class="fas fa-chevron-down ml-auto text-xs text-blue-300 group-hover:rotate-180 transition-transform duration-300"></i>
+            </div>
+            <div class="overflow-hidden transition-all duration-300 max-h-0 group-hover:max-h-48">
+                <ul class="mt-1 space-y-1">
+                    <li>
+                        <a href="Request.php" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'Request.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-calendar-plus w-6"></i>
+                            <span class="ml-3">Sponsorship Requests</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="BudgetManagement.php" class="flex items-center p-3 rounded-lg transition-all duration-200 hover:bg-blue-700 <?php echo basename($_SERVER['PHP_SELF']) == 'BudgetManagement.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+                            <i class="fas fa-handshake w-6"></i>
+                            <span class="ml-3">Budget Management</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Border Line -->
+    <div class="border-t border-blue-700 my-4"></div>
+    
+    <!-- Support & Logout Section -->
+    <div class="mt-auto space-y-2">
+        <a href="Help.php" class="flex items-center p-3 rounded-lg bg-blue-700/30 hover:bg-blue-700 transition-colors <?php echo basename($_SERVER['PHP_SELF']) == 'Help.php' ? 'bg-blue-700 shadow-md' : ''; ?>">
+            <i class="fas fa-question-circle w-6"></i>
+            <span class="ml-3">Help</span>
+        </a>
+        <a href="../../Controller/Logout.php" class="flex items-center p-3 rounded-lg bg-red-600 hover:bg-red-700 transition-colors">
+            <i class="fas fa-sign-out-alt w-6"></i>
+            <span class="ml-3">Log Out</span>
+        </a>
+    </div>
+    
+    <!-- App Version -->
+    <div class="mt-3 text-center text-xs text-blue-300 opacity-50">
+        <p>SponsMe v1.0.2</p>
+    </div>
+</div>
 
     <!-- Main Content -->
     <div class="flex-1 p-4 md:p-8">
-        <div class="bg-[#1F509A] rounded-lg shadow-lg p-6">
+        <div class="bg-white rounded-lg shadow-lg p-6">
             <!-- Page Header -->
             <div class="mb-6">
-                <h3 class="text-2xl font-bold text-white">Sponsorship Documentation</h3>
-                <p class="text-white mt-2">Complete the sponsorship details for the event: <strong><?php echo htmlspecialchars($requestData['event_topic']); ?></strong></p>
+                <h3 class="text-2xl font-bold text-black">Sponsorship Documentation</h3>
+                <p class="text-black mt-2">Complete the sponsorship details for the event: <strong><?php echo htmlspecialchars($requestData['event_topic']); ?></strong></p>
             </div>
 
             <!-- Event Summary -->
-            <div class="bg-blue-800 rounded-lg p-4 mb-6">
-                <h4 class="text-xl font-semibold text-white mb-3">Event Summary</h4>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-white">
+            <div class="bg-blue-100 rounded-lg p-4 mb-6">
+                <h4 class="text-xl font-semibold text-black mb-3">Event Summary</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
                     <div>
                         <p class="mb-1"><i class="bi bi-calendar-event me-2"></i> <strong>Event:</strong> <?php echo htmlspecialchars($requestData["event_topic"]); ?></p>
                         <p class="mb-1"><i class="bi bi-people me-2"></i> <strong>Crew Name:</strong> <?php echo htmlspecialchars($requestData["crew_name"]); ?></p>
@@ -107,36 +176,36 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
             </div>
 
             <!-- Sponsorship Form -->
-            <div class="bg-blue-800 rounded-lg p-4 mb-6">
-                <h4 class="text-xl font-semibold text-white mb-3">Sponsorship Details</h4>
+            <div class="bg-blue-100 rounded-lg p-4 mb-6">
+                <h4 class="text-xl font-semibold text-black mb-3">Sponsorship Details</h4>
                 <form id="sponsorshipForm" action="../../Controller/Sponsor/process_sponsorship.php" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="request_id" value="<?php echo $request_id; ?>">
                     
                     <div class="mb-3">
-                        <label for="amount" class="block text-white font-medium mb-1">Sponsorship Amount (in TND)</label>
+                        <label for="amount" class="block text-black font-medium mb-1">Sponsorship Amount (in TND)</label>
                         <input type="number" class="form-control" id="amount" name="amount" required min="0" step="0.01">
                     </div>
                     
                     <div class="mb-3">
-                        <label for="document" class="block text-white font-medium mb-1">Attach Document (PDF or Image)</label>
+                        <label for="document" class="block text-black font-medium mb-1">Attach Document (PDF or Image)</label>
                         <input type="file" class="form-control" id="document" name="document" accept=".pdf,.jpg,.jpeg,.png" required>
-                        <small class="text-white opacity-75">Please attach the sponsorship contract or agreement (Max 5MB)</small>
+                        <small class="text-black opacity-75">Please attach the sponsorship contract or agreement (Max 5MB)</small>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="notes" class="block text-white font-medium mb-1">Notes (Optional)</label>
+                        <label for="notes" class="block text-black font-medium mb-1">Notes (Optional)</label>
                         <textarea class="form-control" id="notes" name="notes" rows="3"><?php echo htmlspecialchars($requestData['notes'] ?? ''); ?></textarea>
                     </div>
                     
                     <div class="mb-3">
-                        <label for="location_details" class="block text-white font-medium mb-1">Location Details (Optional)</label>
+                        <label for="location_details" class="block text-black font-medium mb-1">Location Details (Optional)</label>
                         <div class="input-group">
                             <textarea class="form-control" id="location_details" name="location_details" rows="3" placeholder="Paste a Google Maps link or fetch your current location"><?php echo htmlspecialchars($requestData['location_details'] ?? ''); ?></textarea>
-                            <button type="button" class="btn text-white font-semibold bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 rounded-lg px-4 py-2" id="fetchLocation">
+                            <button type="button" class="btn text-black font-semibold bg-gradient-to-r from-green-400 to-blue-500 hover:from-green-500 hover:to-blue-600 rounded-lg px-4 py-2" id="fetchLocation">
                                 <i class="bi bi-geo-alt me-1"></i> Fetch Current Location
                             </button>
                         </div>
-                        <small class="text-white opacity-75">Paste a Google Maps link or click the button to fetch your current location with accuracy details.</small>
+                        <small class="text-black opacity-75">Paste a Google Maps link or click the button to fetch your current location with accuracy details.</small>
                     </div>
 
                     <div class="flex flex-col md:flex-row justify-between gap-4 mt-5">

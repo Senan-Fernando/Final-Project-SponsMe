@@ -37,12 +37,12 @@ $result = $stmt->get_result();
 
 // Store accepted sponsorships in an array
 $accepted_sponsorships = [];
-$base_url = '/Final-Project-SponsMe'; // Base URL of the project
+$base_url = '/Final-Project-SponsMe-main'; // Base URL of the project
 $default_image = $base_url . '../Static Assets/images/noProfile.png'; // Path to a default profile image
 while ($row = $result->fetch_assoc()) {
     // Adjust the document path to be relative to the web root
     if (!empty($row['document_path'])) {
-        $row['document_path'] = $base_url . '/' . ltrim($row['document_path'], '/');
+        $row['document_path'] = rtrim($base_url, '/') . '/' . ltrim(str_replace('\\', '/', $row['document_path']), '/');
     }
     // Determine the profile image to use
     if (!empty($row['uploaded_image'])) {
@@ -260,9 +260,12 @@ $conn->close();
                             <?php endif; ?>
                             <!-- Document Button -->
                             <?php if (!empty($sponsorship['document_path'])): ?>
-                                <button class="btn btn-primary w-full mt-3" onclick="viewDocument('<?php echo htmlspecialchars($sponsorship['document_path']); ?>')">
-                                    <i class="bi bi-eye mr-1"></i> View Document
-                                </button>
+                                <a href="<?php echo htmlspecialchars($sponsorship['document_path']); ?>" 
+   class="btn btn-primary w-full mt-3" 
+   target="_blank">
+    <i class="bi bi-eye mr-1"></i> View Document
+</a>
+
                             <?php else: ?>
                                 <p class="document-message mt-3">No document available</p>
                             <?php endif; ?>

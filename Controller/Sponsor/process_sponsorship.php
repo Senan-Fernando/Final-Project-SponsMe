@@ -120,8 +120,15 @@ if ($result && $result->num_rows > 0) {
                 $conn->query($createTableQuery);
 
                 // Ensure the sponsorship_requests table has the location_details column
-                $alterTableQuery = "ALTER TABLE sponsorship_requests ADD COLUMN IF NOT EXISTS location_details TEXT NULL";
-                $conn->query($alterTableQuery);
+                $checkColumnQuery = "SHOW COLUMNS FROM sponsorship_requests LIKE 'location_details'";
+                $columnResult = $conn->query($checkColumnQuery);
+                
+                if ($columnResult->num_rows == 0) {
+                    // Column doesn't exist, so add it
+                    $alterTableQuery = "ALTER TABLE sponsorship_requests ADD COLUMN location_details TEXT NULL";
+                    $conn->query($alterTableQuery);
+                }
+                
 
                 // Update sponsorship_requests with location_details (optional)
                 $updateQuery = "UPDATE sponsorship_requests SET location_details = ? WHERE id = ?";
