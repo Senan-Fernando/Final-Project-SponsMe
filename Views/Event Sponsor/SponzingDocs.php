@@ -182,7 +182,7 @@ $requestDate = date("M d, Y", strtotime($requestData["request_date"]));
                     <input type="hidden" name="request_id" value="<?php echo $request_id; ?>">
                     
                     <div class="mb-3">
-                        <label for="amount" class="block text-black font-medium mb-1">Sponsorship Amount (in TND)</label>
+                        <label for="amount" class="block text-black font-medium mb-1">Sponsorship Amount (in LKR)</label>
                         <input type="number" class="form-control" id="amount" name="amount" required min="0" step="0.01">
                     </div>
                     

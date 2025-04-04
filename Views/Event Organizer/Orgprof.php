@@ -91,7 +91,6 @@ $conn->close();
 
 <body class="bg-gray-100 min-h-screen flex flex-col md:flex-row">
 
-    <!-- Sidebar -->
 <!-- Sidebar -->
 <div class="bg-gradient-to-b from-blue-900 to-blue-800 text-white w-full md:w-1/4 p-6 shadow-2xl flex flex-col h-screen fixed md:sticky top-0">
     <!-- Logo and Brand -->
