@@ -101,7 +101,7 @@
                             Log In
                         </button>
 
-                        <div class="mt-6 text-center" data-aos="fade-up" data-aos-delay="600">
+                        <div class="mt-6 text-center">
                             <a href="#" class="text-blue-600 hover:text-blue-800 transition duration-300">Forgot Password?</a>
                             <span class="text-gray-500 mx-2">|</span>
                             <a href="SignupCategory.php" class="text-red-600 hover:text-red-800 transition duration-300">Sign Up</a>

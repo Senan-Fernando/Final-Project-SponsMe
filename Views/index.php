@@ -82,7 +82,8 @@
 <body class="bg-white">
 
     <!-- Navbar -->
-    <nav class="bg-blue-800 p-4 flex justify-between items-center text-white sticky top-0 z-50 shadow-lg" data-aos="fade-down" data-aos-duration="800">
+    <nav class="bg-blue-800 p-4 flex justify-between items-center text-white sticky top-0 z-50 shadow-lg"
+        data-aos="fade-down" data-aos-duration="800">
         <div>
             <a href="index.php" class="text-white hover:text-blue-300 transition">
                 <h1 class="text-2xl font-bold">
@@ -109,8 +110,10 @@
                     $profileLink = "../Views/Common/Dashboard.php";
                 }
                 ?>
-                <a href="<?= $profileLink ?>" class="nav-link text-white text-sm sm:text-base animated-underline">BACK TO PROFILE</a>
-                <a href="../Controller/Logout.php" class="nav-link text-white text-sm sm:text-base animated-underline">LOGOUT</a>
+                <a href="<?= $profileLink ?>" class="nav-link text-white text-sm sm:text-base animated-underline">BACK TO
+                    PROFILE</a>
+                <a href="../Controller/Logout.php"
+                    class="nav-link text-white text-sm sm:text-base animated-underline">LOGOUT</a>
             <?php else: ?>
                 <a href="Login.php" class="nav-link text-white text-sm sm:text-base animated-underline">LOGIN</a>
             <?php endif; ?>
@@ -124,7 +127,8 @@
         <div class="lg:w-1/2 text-center lg:text-left" data-aos="fade-right" data-aos-duration="1000">
             <h1 class="text-4xl sm:text-5xl font-bold" data-aos="fade-up" data-aos-delay="200">We Get</h1>
             <h1 class="text-4xl sm:text-5xl font-bold" data-aos="fade-up" data-aos-delay="400">Your Sponsorship</h1>
-            <h1 class="text-4xl sm:text-5xl font-bold text-green-500" data-aos="fade-up" data-aos-delay="600">Easily</h1>
+            <h1 class="text-4xl sm:text-5xl font-bold text-green-500" data-aos="fade-up" data-aos-delay="600">Easily
+            </h1>
 
             <button onclick="window.location.href='login.php'"
                 class="mt-8 bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-600 text-sm sm:text-base cta-button"
@@ -135,7 +139,8 @@
 
         <!-- Image or Illustration -->
         <div class="lg:w-1/3 mt-8 lg:mt-0" data-aos="fade-left" data-aos-duration="1000">
-            <img src="../Static Assets/images/home.png" alt="Sponsorship Illustration" class="rounded-lg float-animation">
+            <img src="../Static Assets/images/home.png" alt="Sponsorship Illustration"
+                class="rounded-lg float-animation">
         </div>
     </section>
 
@@ -148,17 +153,20 @@
                 sponsorship process, making it easier for you to find the right opportunities and partnerships.
             </p>
             <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="flip-left" data-aos-delay="200" data-aos-duration="800">
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="flip-left" data-aos-delay="200"
+                    data-aos-duration="800">
                     <i class="fas fa-users text-4xl text-blue-700 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">For Organizers</h3>
                     <p class="text-gray-700">Find the right sponsors for your events with ease.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="flip-left" data-aos-delay="400" data-aos-duration="800">
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="flip-left" data-aos-delay="400"
+                    data-aos-duration="800">
                     <i class="fas fa-handshake text-4xl text-green-500 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">For Sponsors</h3>
                     <p class="text-gray-700">Discover events that align with your brand values.</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="flip-left" data-aos-delay="600" data-aos-duration="800">
+                <div class="bg-white p-6 rounded-lg shadow-md" data-aos="flip-left" data-aos-delay="600"
+                    data-aos-duration="800">
                     <i class="fas fa-chart-line text-4xl text-purple-500 mb-4"></i>
                     <h3 class="text-xl font-bold mb-2">Growth</h3>
                     <p class="text-gray-700">Grow your network and opportunities with SponsMe.</p>
@@ -171,65 +179,82 @@
     <!-- How It Works Section -->
     <section id="how-it-works" class="bg-gray-100">
         <div class="container mx-auto px-4 py-16">
-            <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-gray-800 text-center" data-aos="fade-up">How It Works</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-gray-800 text-center" data-aos="fade-up">How It Works
+            </h2>
 
             <div class="flex flex-col lg:flex-row gap-8 items-center">
                 <div class="w-full lg:w-1/2" data-aos="fade-right">
                     <div id="step-image-container" class="relative overflow-hidden rounded-lg p-6">
-                        <img id="step-image" src="../Static Assets/images/carosel/1.png" class="w-full h-auto mx-auto transition-all duration-500" alt="Step 1">
+                        <img id="step-image" src="../Static Assets/images/carosel/1.png"
+                            class="w-full h-auto mx-auto transition-all duration-500" alt="Step 1">
                     </div>
                 </div>
 
                 <div class="w-full lg:w-1/2 mt-8 lg:mt-0" data-aos="fade-left">
                     <div class="step-content pl-6 py-4">
                         <h3 class="text-2xl font-bold mb-4 text-blue-700" id="step-title">Sign Up</h3>
-                        <p class="text-gray-700 mb-8 leading-relaxed" id="step-description">Create your account in just a few simple steps. Choose whether you're an event organizer looking for sponsors or a sponsor searching for events to support.</p>
+                        <p class="text-gray-700 mb-8 leading-relaxed" id="step-description">Create your account in just
+                            a few simple steps. Choose whether you're an event organizer looking for sponsors or a
+                            sponsor searching for events to support.</p>
 
                         <div class="w-full bg-gray-200 rounded-full h-1.5 mb-6">
-                            <div class="bg-blue-700 h-1.5 rounded-full transition-all duration-700" id="progress-bar" style="width: 11%;"></div>
+                            <div class="bg-blue-700 h-1.5 rounded-full transition-all duration-700" id="progress-bar"
+                                style="width: 11%;"></div>
                         </div>
 
                         <div class="flex flex-wrap gap-2 mb-6">
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="0">
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="0">
                                 <p class="text-sm font-semibold">Sign Up</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="1">
-                                <p class="text-sm font-semibold text-gray-500">Create Profile</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="1">
+                                <p class="text-sm font-semibold text-gray-500">Choose the role</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="2">
-                                <p class="text-sm font-semibold text-gray-500">Explore</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="2">
+                                <p class="text-sm font-semibold text-gray-500">Sponsor Profile</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="3">
-                                <p class="text-sm font-semibold text-gray-500">Match</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="3">
+                                <p class="text-sm font-semibold text-gray-500">Sponorship document</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="4">
-                                <p class="text-sm font-semibold text-gray-500">Connect</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="4">
+                                <p class="text-sm font-semibold text-gray-500">Organizer Profile</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="5">
-                                <p class="text-sm font-semibold text-gray-500">Collaborate</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="5">
+                                <p class="text-sm font-semibold text-gray-500">Event details</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="6">
-                                <p class="text-sm font-semibold text-gray-500">Manage</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="6">
+                                <p class="text-sm font-semibold text-gray-500">Sponsorship request form</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="7">
-                                <p class="text-sm font-semibold text-gray-500">Succeed</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="7">
+                                <p class="text-sm font-semibold text-gray-500">Accepted sponsorships</p>
                             </div>
-                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center" data-step="8">
-                                <p class="text-sm font-semibold text-gray-500">Grow</p>
+                            <div class="step-button cursor-pointer py-2 px-4 transition-all hover:text-blue-700 text-center"
+                                data-step="8">
+                                <p class="text-sm font-semibold text-gray-500">Reports for organizer</p>
                             </div>
                         </div>
 
                         <!-- Navigation Controls -->
                         <div class="flex justify-between mt-6">
-                            <button id="prev-step" class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-colors duration-300 flex items-center border border-gray-300">
+                            <button id="prev-step"
+                                class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-md transition-colors duration-300 flex items-center border border-gray-300">
                                 <i class="fas fa-chevron-left mr-2"></i> Previous
                             </button>
-                            <button id="next-step" class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition-colors duration-300 flex items-center">
+                            <button id="next-step"
+                                class="bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-md transition-colors duration-300 flex items-center">
                                 Next <i class="fas fa-chevron-right ml-2"></i>
                             </button>
                         </div>
 
-                        <button onclick="window.location.href='login.php'" class="mt-8 bg-blue-700 text-white w-full px-6 py-3 rounded-lg hover:bg-blue-600 text-sm sm:text-base cta-button">
+                        <button onclick="window.location.href='login.php'"
+                            class="mt-8 bg-blue-700 text-white w-full px-6 py-3 rounded-lg hover:bg-blue-600 text-sm sm:text-base cta-button">
                             Get Registered for Free
                         </button>
                     </div>
@@ -251,52 +276,52 @@
         mirror: true
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const steps = [{
-                title: "Sign Up",
-                description: "Create your account in just a few simple steps. Choose whether you're an event organizer looking for sponsors or a sponsor searching for events to support.",
-                icon: "fas fa-user-plus"
-            },
-            {
-                title: "Create Profile",
-                description: "Build your profile by adding your details, preferences, and requirements. The more complete your profile, the better matches you'll receive.",
-                icon: "fas fa-id-card"
-            },
-            {
-                title: "Explore",
-                description: "Browse through our curated list of events or sponsors based on your interests, industry, location, and budget requirements.",
-                icon: "fas fa-search"
-            },
-            {
-                title: "Match",
-                description: "Our smart algorithm recommends the best matches for you based on your profile information and preferences.",
-                icon: "fas fa-puzzle-piece"
-            },
-            {
-                title: "Connect",
-                description: "Reach out to potential partners through our secure messaging system and discuss opportunities in detail.",
-                icon: "fas fa-comments"
-            },
-            {
-                title: "Collaborate",
-                description: "Agree on terms, finalize partnerships, and establish clear expectations for your collaboration.",
-                icon: "fas fa-handshake"
-            },
-            {
-                title: "Manage",
-                description: "Use our platform to manage all your sponsorships, track progress, and maintain communication with your partners.",
-                icon: "fas fa-tasks"
-            },
-            {
-                title: "Succeed",
-                description: "Execute successful events and sponsorships with support from our platform throughout the entire process.",
-                icon: "fas fa-check-circle"
-            },
-            {
-                title: "Grow",
-                description: "Build your network, enhance your reputation, and grow your opportunities with SponsMe's continuous support.",
-                icon: "fas fa-chart-line"
-            }
+            title: "Sign Up",
+            description: "If you don't have an account create your account in just a few simple steps. and login to your account. ",
+            icon: "fas fa-user-plus"
+        },
+        {
+            title: "Choose the role",
+            description: "Choose whether you're an event organizer looking for sponsors or a Choose whether you're an event organizer looking for sponsors.",
+            icon: "fas fa-id-card"
+        },
+        {
+            title: "Sponsor Profile",
+            description: "In the side bar you can have a look about the budget you have to sponsor and the sponsor requests that you have recieved.",
+            icon: "fas fa-search"
+        },
+        {
+            title: "Sponsorship document",
+            description: "This form is to fill and adjust the relavent document that the company gives to the organizer as a proof for the sponsorship..",
+            icon: "fas fa-puzzle-piece"
+        },
+        {
+            title: "Organizer Profile",
+            description: "By using the sponsorship tab in the side bar organizer can seek sponsorships and see the accepted sponsorships.",
+            icon: "fas fa-comments"
+        },
+        {
+            title: "Event deatils",
+            description: "Fill the form and click on the find matching sponsors button to get match with sponsors for your event.",
+            icon: "fas fa-handshake"
+        },
+        {
+            title: "Sponsorship request form",
+            description: "Fill the needed amount for the event and add a note if you need and click on the send request button.",
+            icon: "fas fa-tasks"
+        },
+        {
+            title: "Accepted sponsorships",
+            description: "This page shows the accepted sponsorships and by clicking on the view document button you can view the relavent document that the sponsor sent.",
+            icon: "fas fa-check-circle"
+        },
+        {
+            title: "Reports for organizer",
+            description: "By using the report tab in the side bar you can have a look of the histroty of your requested sponsorships and the budget that you have recieved for your events.",
+            icon: "fas fa-chart-line"
+        }
         ];
 
         const stepButtons = document.querySelectorAll('.step-button');
@@ -356,10 +381,12 @@
                 prevButton.disabled = index === 0;
                 prevButton.style.opacity = index === 0 ? '0.5' : '1';
                 nextButton.disabled = index === totalSteps - 1;
-                nextButton.textContent = index === totalSteps - 1 ? 'Get Started' : 'Next';
+                nextButton.textContent = index === totalSteps - 1 ? 'Steps Completed' : 'Next';
                 nextButton.innerHTML = index === totalSteps - 1 ?
-                    'Get Started <i class="fas fa-arrow-right ml-2"></i>' :
+                    'Steps Completed' :
                     'Next <i class="fas fa-chevron-right ml-2"></i>';
+
+
 
                 // Remove animation classes after animation completes
                 setTimeout(() => {
@@ -422,7 +449,7 @@
     });
 
     // Refresh AOS animations when scrolling
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         AOS.refresh();
     });
 
@@ -455,4 +482,5 @@
         button.classList.add('pulse-on-hover');
     });
 </script>
+
 </html>
