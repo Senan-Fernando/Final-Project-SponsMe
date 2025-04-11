@@ -418,10 +418,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </h3>
                             <div class="grid grid-cols-1 gap-4">
                                 <div>
-                                    <label class="block text-gray-700 font-medium mb-2">Requested Amount ($)</label>
+                                    <label class="block text-gray-700 font-medium mb-2">Requested Amount (LKR)</label>
                                     <div class="flex">
                                         <div class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-700 bg-gray-100 border border-gray-300 rounded-l-lg">
-                                            <i class="fas fa-dollar-sign text-blue-600"></i>
+                                            <i class="fas fa-rupee-sign text-blue-600"></i>
                                         </div>
                                         <input type="number" name="requested_amount" step="0.01" min="0" class="rounded-none rounded-r-lg bg-white border border-gray-300 text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5" placeholder="Enter amount (e.g. 5000.00)" required>
                                     </div>
