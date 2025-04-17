@@ -253,7 +253,7 @@
                             </button>
                         </div>
 
-                        <button onclick="window.location.href='login.php'"
+                        <button onclick="window.location.href='Login.php'"
                             class="mt-8 bg-blue-700 text-white w-full px-6 py-3 rounded-lg hover:bg-blue-600 text-sm sm:text-base cta-button">
                             Get Registered for Free
                         </button>
