@@ -130,7 +130,7 @@
             <h1 class="text-4xl sm:text-5xl font-bold text-green-500" data-aos="fade-up" data-aos-delay="600">Easily
             </h1>
 
-            <button onclick="window.location.href='login.php'"
+            <button onclick="window.location.href='Login.php'"
                 class="mt-8 bg-blue-700 text-white px-6 py-3 rounded-lg hover:bg-blue-600 text-sm sm:text-base cta-button"
                 data-aos="zoom-in" data-aos-delay="800">
                 Find Sponsorships
